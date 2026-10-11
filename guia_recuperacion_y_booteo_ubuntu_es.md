@@ -659,9 +659,9 @@ En la pantalla **`Create your account`**, completarás tus datos personales para
 </p>
 
 ### ✍️ Guía para rellenar los campos:
-1. **Su nombre (`Your name`):** Tu nombre real (ej. `Charlotte` o `钱奕彤`).
-2. **Nombre de su equipo (`Your computer's name`):** El nombre con el que se identificará tu laptop en la red (ej. `charlotte-matebook` o `matebook-ubuntu`). Escríbelo en minúsculas y sin espacios.
-3. **Nombre de usuario (`Pick a username`):** El nombre técnico de tu cuenta y de tu carpeta personal (`/home/usuario`). Debe ser en **minúsculas y sin espacios ni caracteres especiales** (ej. `charlotte`).
+1. **Su nombre (`Your name`):** Tu nombre real (ej. `钱奕彤`).
+2. **Nombre de su equipo (`Your computer's name`):** El nombre con el que se identificará tu laptop en la red (ej. `yitong-matebook` o `matebook-ubuntu`). Escríbelo en minúsculas y sin espacios.
+3. **Nombre de usuario (`Pick a username`):** El nombre técnico de tu cuenta y de tu carpeta personal (`/home/usuario`). Debe ser en **minúsculas y sin espacios ni caracteres especiales** (ej. `yitong`).
 4. **Contraseña (`Choose a password`) y Confirmar contraseña:**  
    > [!IMPORTANT]
    > Esta contraseña será tu clave maestra de administración (**`sudo`**). La necesitarás cada vez que instales un programa o hagas cambios importantes en el sistema. Elige una que recuerdes bien y no la olvides.

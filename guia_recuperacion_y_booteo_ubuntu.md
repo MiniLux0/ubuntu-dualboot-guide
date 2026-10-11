@@ -658,9 +658,9 @@ On the **`Create your account`** screen, enter your personal details to set up y
 </p>
 
 ### ✍️ Guide to Filling the Form Fields:
-1. **Your name:** Your real name (e.g., `Charlotte` or `钱奕彤`).
-2. **Your computer's name:** The hostname your laptop uses on the network (e.g., `charlotte-matebook` or `matebook-ubuntu`). Use lowercase letters and hyphens without spaces.
-3. **Pick a username:** The technical username for your profile and home directory (`/home/username`). Use **lowercase letters, no spaces or special characters** (e.g., `charlotte`).
+1. **Your name:** Your real name (e.g., `钱奕彤`).
+2. **Your computer's name:** The hostname your laptop uses on the network (e.g., `yitong-matebook` or `matebook-ubuntu`). Use lowercase letters and hyphens without spaces.
+3. **Pick a username:** The technical username for your profile and home directory (`/home/username`). Use **lowercase letters, no spaces or special characters** (e.g., `yitong`).
 4. **Choose a password and Confirm your password:**  
    > [!IMPORTANT]
    > This password will be your administrative master key (**`sudo`**). You will need it whenever you install applications or make system changes. Pick a password you will remember easily!

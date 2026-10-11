@@ -4,10 +4,10 @@
 ### A complete, foolproof recovery & installation manual for Windows laptops
 
 [![GitHub Pages](https://img.shields.io/badge/Live_Site-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](https://minilux0.github.io/ubuntu-dualboot-guide/)
-[![Download PDF](https://img.shields.io/badge/Download_PDF-21.2_MB-dc2626?style=for-the-badge&logo=adobeacrobatreader)](https://minilux0.github.io/ubuntu-dualboot-guide/ubuntu_dualboot_guide_for_charlotte.pdf)
+[![Download PDF](https://img.shields.io/badge/Download_PDF-21.2_MB-dc2626?style=for-the-badge&logo=adobeacrobatreader)](https://minilux0.github.io/ubuntu-dualboot-guide/ubuntu_dualboot_guide.pdf)
 [![Language Spanish](https://img.shields.io/badge/Versi%C3%B3n-Espa%C3%B1ol-blue?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/es.html)
 [![Screenshots](https://img.shields.io/badge/Screenshots-32_Annotated_Photos-orange?style=for-the-badge&logo=googlephotos)](./imagenes_guia/)
-[![Dedicated](https://img.shields.io/badge/Dedicated_With_Love_To-Charlotte_%E9%92%B1%E5%A5%95%E5%BD%A4-ff69b4?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/)
+[![Dedicated](https://img.shields.io/badge/Dedicated_With_Love_To-%E9%92%B1%E5%A5%95%E5%BD%A4-ff69b4?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/)
 
 <p align="center">
   <b>🌐 Live Interactive Guide (Dark / Light Mode):</b><br>
@@ -20,7 +20,7 @@
 
 ### 📖 About This Project & Real-World Context
 
-> **💖 Dedicated to Charlotte (钱奕彤):**  
+> **💖 Dedicated to 钱奕彤:**  
 > This project was created out of real necessity and lots of love. My girlfriend had frustrating boot errors and corrupted USB partitions while trying to install Ubuntu with Rufus on her **Huawei MateBook (Windows 11)**.  
 > 
 > To prove to her that it was 100% possible and give her absolute confidence, **I ran the full installation on my own laptop (Lenovo IdeaPad), capturing all 32 real-life annotated photos step-by-step**: from deep USB cleaning with `diskpart`, flawless raw bit-by-bit cloning with `balenaEtcher`, BIOS / UEFI Secure Boot configuration, to non-destructive Dual Boot partition resizing alongside Windows.
@@ -706,9 +706,9 @@ On the **`Create your account`** screen, enter your personal details to set up y
 </p>
 
 ### ✍️ Guide to Filling the Form Fields:
-1. **Your name:** Your real name (e.g., `Charlotte` or `钱奕彤`).
-2. **Your computer's name:** The hostname your laptop uses on the network (e.g., `charlotte-matebook` or `matebook-ubuntu`). Use lowercase letters and hyphens without spaces.
-3. **Pick a username:** The technical username for your profile and home directory (`/home/username`). Use **lowercase letters, no spaces or special characters** (e.g., `charlotte`).
+1. **Your name:** Your real name (e.g., `钱奕彤`).
+2. **Your computer's name:** The hostname your laptop uses on the network (e.g., `yitong-matebook` or `matebook-ubuntu`). Use lowercase letters and hyphens without spaces.
+3. **Pick a username:** The technical username for your profile and home directory (`/home/username`). Use **lowercase letters, no spaces or special characters** (e.g., `yitong`).
 4. **Choose a password and Confirm your password:**  
    > [!IMPORTANT]
    > This password will be your administrative master key (**`sudo`**). You will need it whenever you install applications or make system changes. Pick a password you will remember easily!
