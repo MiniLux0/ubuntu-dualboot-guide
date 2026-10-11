@@ -1,6 +1,6 @@
 # 🐧 Guía Visual y Definitiva: Instalación de Ubuntu con balenaEtcher en tu Laptop con Windows (Dual Boot Seguro)
 
-> **💖 Para mi novia hermosa:** Preparé esta guía paso a paso especialmente para ti con mucho cariño, pensada para que puedas instalar **Ubuntu** en tu laptop con **Windows** sin ningún dolor de cabeza, dejando atrás los errores y la frustración que tuviste con Rufus. Aquí aprenderás a recuperar tu memoria USB, grabarla de forma infalible con **balenaEtcher**, configurar el arranque en tu BIOS y convivir con ambos sistemas (**Dual Boot**) con absoluta seguridad para todos tus archivos.
+> **💖 Para mi novia hermosa:** Preparé esta guía paso a paso especialmente para ti con mucho cariño, pensada para que puedas instalar Ubuntu en tu laptop con Windows sin ningún dolor de cabeza, dejando atrás los errores y la frustración que tuviste con Rufus. Aquí aprenderás a recuperar tu memoria USB, grabarla de forma infalible con balenaEtcher, configurar el arranque en tu BIOS y convivir con ambos sistemas (Dual Boot) con absoluta seguridad para todos tus archivos.
 
 ---
 
@@ -40,7 +40,7 @@ Lo que vamos a configurar en tu laptop se llama técnicamente un **Dual Boot** (
 > Por esa razón:
 > 1. En mis fotos verás el logo de **Lenovo** o la opción que menciona *"Kali Linux"*.
 > 2. En tu pantalla verás el logo de **Huawei** y la opción oficial que debes seleccionar:  
->    👉 **`Install Ubuntu alongside Windows Boot Manager`** *(Instalar Ubuntu junto a Windows)*.
+>    👉 **`Install Ubuntu alongside Windows Boot Manager`** (Instalar Ubuntu junto a Windows).
 > 3. En la sección de la BIOS, te incluí la configuración exacta para tu **Huawei** (con la interfaz azul de *InsydeH2O*) y también las fotos de cómo lo hice en mi Lenovo.
 > 
 > En cada paso clave he colocado recuadros especiales resaltando qué verás tú en Windows para que tengas la certeza absoluta de qué botón pulsar sin miedo. ¡Todo lo demás es exactamente igual!
@@ -82,7 +82,7 @@ Cuando intentaste crear el instalador con **Rufus** en tu laptop con Windows, oc
 1. **La trampa de las opciones avanzadas en Rufus:** Rufus te pregunta sobre esquemas de partición (*GPT vs MBR*), sistemas de archivos (*FAT32 vs NTFS*) y si deseas grabar en *Modo Imagen ISO* o *Modo DD*. Si se elige una opción no alineada con tu placa base UEFI moderna, la partición de arranque queda desconfigurada.
 2. **Firmas de arranque bloqueadas (Secure Boot):** Al no grabarse en modo clonación pura (DD), la BIOS de tu laptop detectó archivos que consideró "no autorizados" de fábrica y bloqueó el arranque por seguridad.
 3. **Rebote inmediato (Fallback):** Al no poder iniciar la memoria USB por el bloqueo, la computadora hizo lo único que sabía hacer para protegerte: saltarse la USB e iniciar **Windows** como siempre.
-4. **La solución con balenaEtcher:** **balenaEtcher** no te confunde con decenas de menús. Realiza una **clonación bit a bit idéntica** (modo DD nativo) de la imagen oficial de Ubuntu, respetando las firmas UEFI oficiales de Canonical y validando cada archivo al 100%.
+4. **La solución con balenaEtcher:** Esta herramienta no te confunde con decenas de menús. Realiza una **clonación bit a bit idéntica** (modo DD nativo) de la imagen oficial de Ubuntu, respetando las firmas UEFI oficiales de Canonical y validando cada archivo al 100%.
 
 ---
 
@@ -413,7 +413,7 @@ Con tu laptop completamente apagada, enciéndela y presiona inmediatamente y de 
 1. Con tu laptop apagada, enciéndela y presiona repetidamente la tecla para entrar a la BIOS (generalmente `F2`).
 2. Con las flechas de tu teclado `↑ / ↓`, baja hasta situarte sobre la línea de tu memoria USB:  
    `USB Device 1: ... <Disable>`
-3. Presiona **`F5` o `F6`** (o presiona `Enter`) para cambiar el valor de `<Disable>` a **`<Enable>`** *(recuadro verde)*.
+3. Presiona **`F5` o `F6`** (o presiona `Enter`) para cambiar el valor de `<Disable>` a **`<Enable>`** (recuadro verde).
 4. Baja con la flecha hasta situarte sobre **`Secure Boot`**.
 5. Presiona **`F5` o `F6`** para cambiar de `<Enable>` a **`<Disable>`**.
 6. **Guardar cambios y reiniciar:** Presiona la tecla **`F10` (recuadro celeste en la esquina inferior)** para guardar y salir (*Save and Exit*). Confirma con `Enter`.
@@ -429,14 +429,14 @@ En las fotos que tomé en mi laptop Lenovo, la interfaz de la BIOS se divide en 
 </p>
 
 1. Entré a la BIOS con **`Fn + F2`**.
-2. Fui con la flecha derecha hasta la pestaña **`Security`** *(recuadro celeste en la foto)*.
-3. Bajé hasta la opción **`Secure Boot`** (que venía en `[Enabled]` con *recuadro rojo*) y la cambié a **`[Disabled]`** *(recuadro verde)*:
+2. Fui con la flecha derecha hasta la pestaña **`Security`** (recuadro celeste en la foto).
+3. Bajé hasta la opción **`Secure Boot`** (que venía en `[Enabled]` con *recuadro rojo*) y la cambié a **`[Disabled]`** (recuadro verde):
 
 <p align="center">
   <img src="./imagenes_guia/16_bios_lenovo_disable.jpg" alt="Desactivar Secure Boot en Lenovo" width="700"/>
 </p>
 
-4. Presioné **`F10`** para guardar cambios (*Save configuration changes and exit now?*) y elegí **`[Yes]`** *(recuadro verde en la foto)*:
+4. Presioné **`F10`** para guardar cambios (*Save configuration changes and exit now?*) y elegí **`[Yes]`** (recuadro verde en la foto):
 
 <p align="center">
   <img src="./imagenes_guia/18_bios_lenovo_guardar_f10.jpg" alt="Confirmación de guardado con F10 en Lenovo" width="550"/>
@@ -450,7 +450,7 @@ En las fotos que tomé en mi laptop Lenovo, la interfaz de la BIOS se divide en 
 >   <img src="./imagenes_guia/17_bios_lenovo_alerta_f9.jpg" alt="Alerta Setup Confirmation - Load default configuration now" width="550"/>
 > </p>
 > 
-> `F9` significa *Restaurar valores de fábrica*. Si te aparece la alerta del recuadro rojo (*"Load default configuration now?"*), **NO presiones `[YES]`**, ya que la BIOS cancelaría tu cambio y volvería a prender Secure Boot. Siempre debes seleccionar **`[NO]`** *(recuadro verde)* y luego presionar **`F10`**.
+> `F9` significa *Restaurar valores de fábrica*. Si te aparece la alerta del recuadro rojo (*"Load default configuration now?"*), **NO presiones `[YES]`**, ya que la BIOS cancelaría tu cambio y volvería a prender Secure Boot. Siempre debes seleccionar **`[NO]`** (recuadro verde) y luego presionar **`F10`**.
 
 ---
 
@@ -465,7 +465,7 @@ En las fotos que tomé en mi laptop Lenovo, la interfaz de la BIOS se divide en 
   <img src="./imagenes_guia/21_grub_try_or_install_ubuntu.jpg" alt="Menú GNU GRUB con opción Try or Install Ubuntu" width="650"/>
 </p>
 
-* La primera opción vendrá seleccionada por defecto: **`*Try or Install Ubuntu`** *(recuadro verde)*.
+* La primera opción vendrá seleccionada por defecto: **Try or Install Ubuntu** (recuadro verde).
 * Presiona **`Enter`** (o simplemente espera 5 segundos a que continúe solo).
 
 ---
@@ -494,7 +494,7 @@ En la ventana **`Welcome to Ubuntu`**:
   <img src="./imagenes_guia/23_instalador_bienvenida_idioma.jpg" alt="Selección de idioma en el instalador de Ubuntu" width="650"/>
 </p>
 
-1. Baja en la lista hasta seleccionar **`Español`** *(recuadro verde)*.
+1. Baja en la lista hasta seleccionar **`Español`** (recuadro verde).
 2. Haz clic en el botón **`Next` / `Siguiente`** en la esquina inferior derecha *(recuadro celeste)*.
 
 > [!TIP]
@@ -511,7 +511,7 @@ Aparecerá una ventana introductoria con funciones de accesibilidad (visión, au
 </p>
 
 * No necesitas cambiar nada aquí a menos que lo desees.
-* Simplemente haz clic en **`Next` / `Siguiente`** *(recuadro celeste)* para continuar.
+* Simplemente haz clic en **`Next` / `Siguiente`** (recuadro celeste) para continuar.
 
 ---
 
@@ -527,7 +527,7 @@ Aquí configuras el teclado para que las teclas coincidan exactamente con lo que
    - `ñ` / `Ñ`
    - `@` (usando `Alt Gr + Q` o `Alt Gr + 2`)
    - `-` y `_`
-3. Si los caracteres coinciden con tu teclado físico, haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.
+3. Si los caracteres coinciden con tu teclado físico, haz clic en **`Next` / `Siguiente`** (recuadro celeste).
 
 ---
 
@@ -540,7 +540,7 @@ El instalador detectará las redes inalámbricas disponibles:
 
 1. Selecciona el nombre de tu red Wi-Fi de casa.
 2. Introduce tu contraseña y haz clic en **Connect** / Conectar.
-3. Haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.  
+3. Haz clic en **`Next` / `Siguiente`** (recuadro celeste).  
    *(Estar conectada a internet permite que Ubuntu descargue automáticamente el paquete completo de traducción al español y los controladores más recientes).*
 
 ---
@@ -552,8 +552,8 @@ Aparecerá la pantalla que te pregunta: *"What do you want to do with Ubuntu?"*:
   <img src="./imagenes_guia/27_instalador_probar_o_instalar.jpg" alt="Opción Install Ubuntu seleccionada" width="650"/>
 </p>
 
-* Marca la opción: **`Install Ubuntu`** *(Install Ubuntu alongside or instead of your current operating system - recuadro verde)*.
-* Haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.
+* Marca la opción: **`Install Ubuntu`** (Install Ubuntu alongside or instead of your current operating system - recuadro verde).
+* Haz clic en **`Next` / `Siguiente`** (recuadro celeste).
 
 ---
 
@@ -564,9 +564,9 @@ Ubuntu te preguntará cómo prefieres llevar a cabo la instalación:
   <img src="./imagenes_guia/28_instalador_tipo_interactivo.jpg" alt="Selección de instalación interactiva" width="650"/>
 </p>
 
-* ✅ Selecciona **`Interactive installation`** *(Instalación interactiva - recuadro verde)*.  
+* ✅ Selecciona **`Interactive installation`** (Instalación interactiva - recuadro verde).  
   Esta opción te permite revisar visualmente cada pantalla con total control.
-* Haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.
+* Haz clic en **`Next` / `Siguiente`** (recuadro celeste).
 
 ---
 
@@ -581,7 +581,7 @@ En la pantalla *"Optimise your computer / Install recommended proprietary softwa
    **¡Marca siempre esta casilla!** Instala los controladores oficiales para que tu tarjeta Wi-Fi y tus gráficos funcionen a máxima velocidad.
 2. ☑️ **`Download and install support for additional media formats`:**  
    Marca esta casilla para que puedas reproducir videos y música (MP4, MP3) sin problemas desde el primer día.
-3. Haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.
+3. Haz clic en **`Next` / `Siguiente`** (recuadro celeste).
 
 ---
 
@@ -601,7 +601,7 @@ En la pantalla *"Optimise your computer / Install recommended proprietary softwa
   `Install Ubuntu alongside Kali GNU/Linux Rolling` *(recuadro verde)*  
   porque en mi laptop yo ya tenía Kali Linux instalado.
 * **En TU pantalla (en tu laptop con Windows):** Aparecerá exactamente esta opción:  
-  👉 **`Install Ubuntu alongside Windows Boot Manager`** *(o "Instalar Ubuntu junto a Windows Boot Manager")*.
+  👉 **`Install Ubuntu alongside Windows Boot Manager`** (o "Instalar Ubuntu junto a Windows Boot Manager").
 
 ---
 
@@ -613,7 +613,7 @@ En la pantalla *"Optimise your computer / Install recommended proprietary softwa
 3. 🛑 **`Erase disk and install Ubuntu` (¡PELIGRO MÁXIMO! - Recuadro rojo inferior):**  
    * Destruiría todas las particiones del disco duro. **Nunca marques esta opción.**
 
-Una vez seleccionada la opción **alongside Windows Boot Manager**, haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.
+Una vez seleccionada la opción **alongside Windows Boot Manager**, haz clic en **`Next` / `Siguiente`** (recuadro celeste).
 
 ---
 
@@ -627,11 +627,11 @@ Al elegir la opción *alongside*, verás una pantalla llamada **`Choose where to
 
 ### 📐 Cómo repartir el espacio de tu disco:
 * **En mi foto:** Verás la partición repartida entre Ubuntu y Kali.
-* **En tu laptop:** Verás la partición repartida entre **Ubuntu** y tu sistema **Windows**.
+* **En tu laptop:** Verás la partición repartida entre Ubuntu y tu sistema Windows.
 * **Cómo usar el deslizador:** Haz clic con el mouse sobre el punto de división central y arrástralo hacia la izquierda o derecha:
   - **Espacio recomendado para Ubuntu:** Asígnale entre **40 GB y 70 GB** (espacio de sobra para el sistema operativo, tus herramientas de estudio, desarrollo y archivos personales).
   - **Espacio para Windows:** Asegúrate de dejarle a Windows suficiente espacio libre para sus tareas normales y actualizaciones.
-* Cuando estés conforme con la distribución, haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.
+* Cuando estés conforme con la distribución, haz clic en **`Next` / `Siguiente`** (recuadro celeste).
 
 ---
 
@@ -644,9 +644,9 @@ Aparecerá la pantalla **`Encryption and file system`** (Cifrado y sistema de ar
 </p>
 
 * En una instalación Dual Boot con Windows, la opción recomendada es:  
-  ⚪ **`No encryption`** *(Sin cifrado)*.  
+  ⚪ **`No encryption`** (Sin cifrado).  
   *(Cifrar la partición añade contraseñas de arranque adicionales que pueden causar conflictos innecesarios con el gestor de arranque de Windows).*
-* Haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.
+* Haz clic en **`Next` / `Siguiente`** (recuadro celeste).
 
 ---
 
@@ -665,8 +665,8 @@ En la pantalla **`Create your account`**, completarás tus datos personales para
 4. **Contraseña (`Choose a password`) y Confirmar contraseña:**  
    > [!IMPORTANT]
    > Esta contraseña será tu clave maestra de administración (**`sudo`**). La necesitarás cada vez que instales un programa o hagas cambios importantes en el sistema. Elige una que recuerdes bien y no la olvides.
-5. **Inicio de sesión:** Marca la casilla **`Solicitar mi contraseña para iniciar sesión`** *(Require my password to log in)* para que nadie pueda entrar sin tu permiso.
-6. Haz clic en **`Next` / `Siguiente`** *(recuadro celeste)*.
+5. **Inicio de sesión:** Marca la casilla **`Solicitar mi contraseña para iniciar sesión`** (Require my password to log in) para que nadie pueda entrar sin tu permiso.
+6. Haz clic en **`Next` / `Siguiente`** (recuadro celeste).
 
 ---
 
@@ -716,6 +716,10 @@ Al culminar el proceso, aparecerá una ventana que dice:
 ## 🐧 Fase 14: Tu Nuevo Arranque Dual: Cómo Elegir entre Ubuntu o Windows
 
 A partir de ahora, cada vez que enciendas tu laptop, aparecerá una pantalla azul/negra llamada **Menú GNU GRUB**:
+
+<p align="center">
+  <img src="./imagenes_guia/35_grub_dualboot_menu.jpg" alt="Menú GNU GRUB Dual Boot" width="650"/>
+</p>
 
 ```text
                        GNU GRUB version 2.12

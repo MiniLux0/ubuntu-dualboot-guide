@@ -1,0 +1,480 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-base: #0b0f19;
+  --bg-mesh: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.16) 0%, rgba(15, 23, 42, 0.75) 45%, #0b0f19 100%),
+             radial-gradient(circle at 100% 60%, rgba(233, 84, 32, 0.08) 0%, transparent 40%);
+  --card-surface: rgba(18, 24, 38, 0.88);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-hover-border: rgba(99, 102, 241, 0.35);
+  
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-subtle: #94a3b8;
+  --heading-main: #ffffff;
+  
+  --brand-ubuntu: #e95420;
+  --brand-indigo: #6366f1;
+  --brand-cyan: #38bdf8;
+  --brand-emerald: #10b981;
+  --brand-rose: #f43f5e;
+  --brand-amber: #f59e0b;
+  
+  --navbar-bg: rgba(11, 15, 25, 0.85);
+  --navbar-border: rgba(255, 255, 255, 0.08);
+  
+  --code-inline-bg: rgba(99, 102, 241, 0.12);
+  --code-inline-text: #38bdf8;
+  --code-inline-border: rgba(56, 189, 248, 0.22);
+  
+  --pre-bg: #070a13;
+  --pre-border: rgba(255, 255, 255, 0.08);
+  
+  --table-head: #131b2e;
+  --table-border: #1e293b;
+  --table-zebra: rgba(255, 255, 255, 0.02);
+  
+  --callout-note: rgba(56, 189, 248, 0.09);
+  --callout-note-border: #38bdf8;
+  --callout-tip: rgba(16, 185, 129, 0.09);
+  --callout-tip-border: #10b981;
+  --callout-warn: rgba(245, 158, 11, 0.1);
+  --callout-warn-border: #f59e0b;
+  --callout-danger: rgba(239, 68, 68, 0.1);
+  --callout-danger-border: #ef4444;
+  
+  --love-bg: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(168, 85, 247, 0.09));
+  --love-border: rgba(244, 63, 94, 0.35);
+  --love-text: #fecdd3;
+  
+  --shadow-glass: 0 20px 45px -10px rgba(0, 0, 0, 0.65);
+}
+
+[data-theme="light"] {
+  --bg-base: #f8fafc;
+  --bg-mesh: radial-gradient(circle at 50% 0%, #e0e7ff 0%, #f1f5f9 50%, #f8fafc 100%);
+  --card-surface: rgba(255, 255, 255, 0.96);
+  --card-border: #e2e8f0;
+  --card-hover-border: #cbd5e1;
+  
+  --text-main: #0f172a;
+  --text-muted: #334155;
+  --text-subtle: #64748b;
+  --heading-main: #0f172a;
+  
+  --navbar-bg: rgba(255, 255, 255, 0.9);
+  --navbar-border: #e2e8f0;
+  
+  --code-inline-bg: #f1f5f9;
+  --code-inline-text: #0284c7;
+  --code-inline-border: #cbd5e1;
+  
+  --pre-bg: #0f172a;
+  --pre-border: #334155;
+  
+  --table-head: #f1f5f9;
+  --table-border: #cbd5e1;
+  --table-zebra: #f8fafc;
+  
+  --callout-note: #eff6ff;
+  --callout-note-border: #3b82f6;
+  --callout-tip: #ecfdf5;
+  --callout-tip-border: #10b981;
+  --callout-warn: #fffbeb;
+  --callout-warn-border: #f59e0b;
+  --callout-danger: #fef2f2;
+  --callout-danger-border: #ef4444;
+  
+  --love-bg: linear-gradient(135deg, #fff1f2, #fdf4ff);
+  --love-border: #f43f5e;
+  --love-text: #9f1239;
+  
+  --shadow-glass: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.8;
+  color: var(--text-main);
+  background-color: var(--bg-base);
+  background-image: var(--bg-mesh);
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Scroll Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #e95420, #a855f7, #38bdf8);
+  z-index: 10000;
+  transition: width 0.1s ease;
+}
+
+/* Header & Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--navbar-border);
+  padding: 13px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.15em;
+  color: var(--heading-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  letter-spacing: -0.015em;
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, #e95420, #a855f7);
+  color: white;
+  font-size: 0.72em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 9px;
+  font-size: 0.88em;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main) !important;
+  border-color: var(--card-border);
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--brand-indigo);
+  transform: translateY(-1px);
+}
+
+.btn-pdf {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+.btn-pdf:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-theme {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border-color: var(--card-border);
+  padding: 8px 12px;
+  font-size: 1.1em;
+}
+.btn-theme:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Container */
+.container {
+  max-width: 980px;
+  margin: 40px auto 80px auto;
+  padding: 0 20px;
+}
+
+.guide-card {
+  background: var(--card-surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 55px 65px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-glass);
+  transition: border-color 0.25s ease;
+}
+
+/* Headings: Warm, Elegant, Human (Outfit font) */
+h1, h2, h3, h4 {
+  color: var(--heading-main);
+  font-family: 'Outfit', -apple-system, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: 2.3em;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--card-border);
+}
+
+h2 {
+  font-size: 1.62em;
+  font-weight: 700;
+  margin-top: 2.6em;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+h3 {
+  font-size: 1.3em;
+  font-weight: 650;
+  margin-top: 1.8em;
+  margin-bottom: 12px;
+}
+
+h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--brand-cyan);
+  margin-top: 1.4em;
+}
+
+p, li {
+  font-size: 1.05em;
+  color: var(--text-muted);
+  line-height: 1.82;
+}
+
+strong {
+  color: var(--text-main);
+  font-weight: 650;
+}
+
+a {
+  color: var(--brand-cyan);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+/* Romantic Love Card for 钱奕彤 */
+.love-card {
+  background: var(--love-bg);
+  border: 1px solid var(--love-border);
+  border-left: 6px solid #f43f5e;
+  border-radius: 16px;
+  padding: 24px 30px;
+  margin: 25px 0 35px 0;
+  box-shadow: 0 10px 25px rgba(244, 63, 94, 0.12);
+}
+.love-card p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--love-text) !important;
+  font-size: 1.08em;
+  margin: 0;
+  line-height: 1.75;
+}
+
+/* Callouts */
+blockquote {
+  margin: 26px 0;
+  padding: 18px 24px;
+  border-radius: 0 14px 14px 0;
+  background: var(--callout-note);
+  border-left: 5px solid var(--callout-note-border);
+  color: var(--text-main);
+}
+blockquote p { margin: 0; color: var(--text-main); }
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+  margin: 26px auto;
+  display: block;
+  border: 1px solid var(--card-border);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+img:hover {
+  transform: scale(1.015);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+}
+
+/* Code Blocks with Copy Buttons (JetBrains Mono strictly for code) */
+code {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--code-inline-bg);
+  color: var(--code-inline-text);
+  border: 1px solid var(--code-inline-border);
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 0.88em;
+}
+
+.code-container {
+  position: relative;
+  margin: 24px 0;
+}
+
+pre {
+  background: var(--pre-bg);
+  border: 1px solid var(--pre-border);
+  padding: 20px 22px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 0;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
+}
+pre code {
+  background: transparent;
+  border: none;
+  color: #e2e8f0;
+  padding: 0;
+  font-size: 0.94em;
+  line-height: 1.65;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.78em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--table-border);
+}
+th {
+  background: var(--table-head);
+  color: var(--heading-main);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.96em;
+  font-weight: 700;
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border);
+}
+td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-muted);
+}
+tr:nth-child(even) { background: var(--table-zebra); }
+tr:hover { background: rgba(255, 255, 255, 0.03); }
+
+/* Dividers */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+  margin: 45px 0;
+}
+
+/* Back to Top Floating Button */
+#back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--card-surface);
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  z-index: 999;
+  font-size: 1.1em;
+}
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+#back-to-top:hover {
+  background: var(--brand-indigo);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-subtle);
+  font-size: 0.92em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  border-top: 1px solid var(--navbar-border);
+}
+
+@media (max-width: 768px) {
+  .guide-card { padding: 30px 20px; border-radius: 14px; }
+  .navbar { flex-direction: column; gap: 12px; padding: 14px 18px; }
+  .nav-actions { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+  h1 { font-size: 1.8em; }
+  h2 { font-size: 1.4em; }
+}

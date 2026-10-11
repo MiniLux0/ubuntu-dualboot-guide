@@ -19,556 +19,8 @@
 <meta name="twitter:image" content="https://minilux0.github.io/ubuntu-dualboot-guide/imagenes_guia/30_instalador_junto_windows.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐧</text></svg>">
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
-  :root {
-    --bg-base: #0b0f19;
-    --bg-mesh: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.16) 0%, rgba(15, 23, 42, 0.75) 45%, #0b0f19 100%),
-               radial-gradient(circle at 100% 60%, rgba(233, 84, 32, 0.08) 0%, transparent 40%);
-    --card-surface: rgba(18, 24, 38, 0.88);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --card-hover-border: rgba(99, 102, 241, 0.35);
-    
-    --text-main: #f8fafc;
-    --text-muted: #cbd5e1;
-    --text-subtle: #94a3b8;
-    --heading-main: #ffffff;
-    
-    --brand-ubuntu: #e95420;
-    --brand-indigo: #6366f1;
-    --brand-cyan: #38bdf8;
-    --brand-emerald: #10b981;
-    --brand-rose: #f43f5e;
-    --brand-amber: #f59e0b;
-    
-    --navbar-bg: rgba(11, 15, 25, 0.85);
-    --navbar-border: rgba(255, 255, 255, 0.08);
-    
-    --code-inline-bg: rgba(99, 102, 241, 0.12);
-    --code-inline-text: #38bdf8;
-    --code-inline-border: rgba(56, 189, 248, 0.22);
-    
-    --pre-bg: #070a13;
-    --pre-border: rgba(255, 255, 255, 0.08);
-    
-    --table-head: #131b2e;
-    --table-border: #1e293b;
-    --table-zebra: rgba(255, 255, 255, 0.02);
-    
-    --callout-note: rgba(56, 189, 248, 0.09);
-    --callout-note-border: #38bdf8;
-    --callout-tip: rgba(16, 185, 129, 0.09);
-    --callout-tip-border: #10b981;
-    --callout-warn: rgba(245, 158, 11, 0.1);
-    --callout-warn-border: #f59e0b;
-    --callout-danger: rgba(239, 68, 68, 0.1);
-    --callout-danger-border: #ef4444;
-    
-    --love-bg: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(168, 85, 247, 0.09));
-    --love-border: rgba(244, 63, 94, 0.35);
-    --love-text: #fecdd3;
-    
-    --shadow-glass: 0 20px 45px -10px rgba(0, 0, 0, 0.65);
-  }
-
-  [data-theme="light"] {
-    --bg-base: #f8fafc;
-    --bg-mesh: radial-gradient(circle at 50% 0%, #e0e7ff 0%, #f1f5f9 50%, #f8fafc 100%);
-    --card-surface: rgba(255, 255, 255, 0.96);
-    --card-border: #e2e8f0;
-    --card-hover-border: #cbd5e1;
-    
-    --text-main: #0f172a;
-    --text-muted: #334155;
-    --text-subtle: #64748b;
-    --heading-main: #0f172a;
-    
-    --navbar-bg: rgba(255, 255, 255, 0.9);
-    --navbar-border: #e2e8f0;
-    
-    --code-inline-bg: #f1f5f9;
-    --code-inline-text: #0284c7;
-    --code-inline-border: #cbd5e1;
-    
-    --pre-bg: #0f172a;
-    --pre-border: #334155;
-    
-    --table-head: #f1f5f9;
-    --table-border: #cbd5e1;
-    --table-zebra: #f8fafc;
-    
-    --callout-note: #eff6ff;
-    --callout-note-border: #3b82f6;
-    --callout-tip: #ecfdf5;
-    --callout-tip-border: #10b981;
-    --callout-warn: #fffbeb;
-    --callout-warn-border: #f59e0b;
-    --callout-danger: #fef2f2;
-    --callout-danger-border: #ef4444;
-    
-    --love-bg: linear-gradient(135deg, #fff1f2, #fdf4ff);
-    --love-border: #f43f5e;
-    --love-text: #9f1239;
-    
-    --shadow-glass: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-  }
-
-  * { box-sizing: border-box; }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.8;
-    color: var(--text-main);
-    background-color: var(--bg-base);
-    background-image: var(--bg-mesh);
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.01em;
-    transition: background-color 0.25s ease, color 0.25s ease;
-  }
-
-  /* Scroll Progress Bar */
-  #progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, #e95420, #a855f7, #38bdf8);
-    z-index: 10000;
-    transition: width 0.1s ease;
-  }
-
-  /* Header & Navbar */
-  .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--navbar-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--navbar-border);
-    padding: 13px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav-brand {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    font-size: 1.15em;
-    color: var(--heading-main);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    letter-spacing: -0.015em;
-  }
-  
-  .brand-badge {
-    background: linear-gradient(135deg, #e95420, #a855f7);
-    color: white;
-    font-size: 0.72em;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-
-  .nav-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .btn {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 8px 16px;
-    border-radius: 9px;
-    font-size: 0.88em;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .btn-outline {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-main) !important;
-    border-color: var(--card-border);
-  }
-  .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--brand-indigo);
-    transform: translateY(-1px);
-  }
-
-  .btn-pdf {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
-  }
-  .btn-pdf:hover {
-    background: linear-gradient(135deg, #dc2626, #b91c1c);
-    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
-    transform: translateY(-1px);
-  }
-
-  .btn-theme {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-main);
-    border-color: var(--card-border);
-    padding: 8px 12px;
-    font-size: 1.1em;
-  }
-  .btn-theme:hover {
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  /* Container */
-  .container {
-    max-width: 980px;
-    margin: 40px auto 80px auto;
-    padding: 0 20px;
-  }
-
-  .guide-card {
-    background: var(--card-surface);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 22px;
-    padding: 55px 65px;
-    border: 1px solid var(--card-border);
-    box-shadow: var(--shadow-glass);
-    transition: border-color 0.25s ease;
-  }
-
-  /* Headings: Warm, Elegant, Human (Outfit font) */
-  h1, h2, h3, h4 {
-    color: var(--heading-main);
-    font-family: 'Outfit', -apple-system, sans-serif;
-    letter-spacing: -0.025em;
-  }
-
-  h1 {
-    font-size: 2.3em;
-    font-weight: 800;
-    line-height: 1.25;
-    margin-top: 0;
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--card-border);
-  }
-
-  h2 {
-    font-size: 1.62em;
-    font-weight: 700;
-    margin-top: 2.6em;
-    margin-bottom: 18px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--card-border);
-  }
-
-  h3 {
-    font-size: 1.3em;
-    font-weight: 650;
-    margin-top: 1.8em;
-    margin-bottom: 12px;
-  }
-
-  h4 {
-    font-size: 1.1em;
-    font-weight: 600;
-    color: var(--brand-cyan);
-    margin-top: 1.4em;
-  }
-
-  p, li {
-    font-size: 1.05em;
-    color: var(--text-muted);
-    line-height: 1.82;
-  }
-
-  strong {
-    color: var(--text-main);
-    font-weight: 650;
-  }
-
-  a {
-    color: var(--brand-cyan);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.15s ease;
-  }
-  a:hover {
-    color: #7dd3fc;
-    text-decoration: underline;
-  }
-
-  /* Romantic Love Card for 钱奕彤 */
-  .love-card {
-    background: var(--love-bg);
-    border: 1px solid var(--love-border);
-    border-left: 6px solid #f43f5e;
-    border-radius: 16px;
-    padding: 24px 30px;
-    margin: 25px 0 35px 0;
-    box-shadow: 0 10px 25px rgba(244, 63, 94, 0.12);
-  }
-  .love-card p {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    color: var(--love-text) !important;
-    font-size: 1.08em;
-    margin: 0;
-    line-height: 1.75;
-  }
-
-  /* Callouts */
-  blockquote {
-    margin: 26px 0;
-    padding: 18px 24px;
-    border-radius: 0 14px 14px 0;
-    background: var(--callout-note);
-    border-left: 5px solid var(--callout-note-border);
-    color: var(--text-main);
-  }
-  blockquote p { margin: 0; color: var(--text-main); }
-
-  /* Images */
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 14px;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
-    margin: 26px auto;
-    display: block;
-    border: 1px solid var(--card-border);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  img:hover {
-    transform: scale(1.015);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
-  }
-
-  /* Code Blocks with Copy Buttons (JetBrains Mono strictly for code) */
-  code {
-    font-family: 'JetBrains Mono', monospace;
-    background: var(--code-inline-bg);
-    color: var(--code-inline-text);
-    border: 1px solid var(--code-inline-border);
-    padding: 2px 7px;
-    border-radius: 6px;
-    font-size: 0.88em;
-  }
-
-  .code-container {
-    position: relative;
-    margin: 24px 0;
-  }
-
-  pre {
-    background: var(--pre-bg);
-    border: 1px solid var(--pre-border);
-    padding: 20px 22px;
-    border-radius: 12px;
-    overflow-x: auto;
-    margin: 0;
-    box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
-  }
-  pre code {
-    background: transparent;
-    border: none;
-    color: #e2e8f0;
-    padding: 0;
-    font-size: 0.94em;
-    line-height: 1.65;
-  }
-
-  .copy-btn {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #94a3b8;
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 0.78em;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .copy-btn:hover {
-    background: rgba(255, 255, 255, 0.18);
-    color: #ffffff;
-  }
-
-  /* Tables */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 30px 0;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--table-border);
-  }
-  th {
-    background: var(--table-head);
-    color: var(--heading-main);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.96em;
-    font-weight: 700;
-    padding: 14px 18px;
-    text-align: left;
-    border-bottom: 1px solid var(--table-border);
-  }
-  td {
-    padding: 13px 18px;
-    border-bottom: 1px solid var(--table-border);
-    color: var(--text-muted);
-  }
-  tr:nth-child(even) { background: var(--table-zebra); }
-  tr:hover { background: rgba(255, 255, 255, 0.03); }
-
-  /* Dividers */
-  hr {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--card-border), transparent);
-    margin: 45px 0;
-  }
-
-  /* Back to Top Floating Button */
-  #back-to-top {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--card-surface);
-    border: 1px solid var(--card-border);
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.25s ease;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    z-index: 999;
-    font-size: 1.1em;
-  }
-  #back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-  }
-  #back-to-top:hover {
-    background: var(--brand-indigo);
-    color: #ffffff;
-    transform: translateY(-2px);
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-subtle);
-    font-size: 0.92em;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    border-top: 1px solid var(--navbar-border);
-  }
-
-  @media (max-width: 768px) {
-    .guide-card { padding: 30px 20px; border-radius: 14px; }
-    .navbar { flex-direction: column; gap: 12px; padding: 14px 18px; }
-    .nav-actions { width: 100%; justify-content: space-between; flex-wrap: wrap; }
-    h1 { font-size: 1.8em; }
-    h2 { font-size: 1.4em; }
-  }
-</style>
-
-<script>
-  // Theme Toggle with LocalStorage
-  function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-  }
-
-  function updateThemeIcon(theme) {
-    const btn = document.getElementById('theme-toggle-btn');
-    if (btn) {
-      btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
-      btn.title = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-    }
-  }
-
-  // Scroll Progress and Back-To-Top
-  window.addEventListener('scroll', () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    document.getElementById('progress-bar').style.width = scrolled + '%';
-
-    const topBtn = document.getElementById('back-to-top');
-    if (winScroll > 400) {
-      topBtn.classList.add('visible');
-    } else {
-      topBtn.classList.remove('visible');
-    }
-  });
-
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Dynamic Copy Code Buttons
-  document.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', saved);
-    updateThemeIcon(saved);
-
-    document.querySelectorAll('pre').forEach((pre) => {
-      const container = document.createElement('div');
-      container.className = 'code-container';
-      pre.parentNode.insertBefore(container, pre);
-      container.appendChild(pre);
-
-      const copyBtn = document.createElement('button');
-      copyBtn.className = 'copy-btn';
-      copyBtn.innerText = 'Copy';
-      copyBtn.onclick = () => {
-        const codeText = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
-        navigator.clipboard.writeText(codeText).then(() => {
-          copyBtn.innerText = 'Copied!';
-          copyBtn.style.color = '#22c55e';
-          setTimeout(() => {
-            copyBtn.innerText = 'Copy';
-            copyBtn.style.color = '';
-          }, 2000);
-        });
-      };
-      container.appendChild(copyBtn);
-    });
-  });
-</script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
 
 </head>
 <body>
@@ -589,7 +41,7 @@
 <div class="container">
   <main class="guide-card">
     <h1 id="the-definitive-visual-guide-installing-ubuntu-with-balenaetcher-on-your-windows-laptop-safe-dual-boot">🐧 The Definitive Visual Guide: Installing Ubuntu with balenaEtcher on your Windows Laptop (Safe Dual Boot)</h1>
-<div class="love-card"><p>💖 <strong>For my beautiful girlfriend:</strong> I prepared this step-by-step guide especially for you with all my love, designed so that you can install **Ubuntu** on your **Windows** laptop completely stress-free, leaving behind all the errors and frustration you experienced with Rufus. Here you will learn how to revive your USB flash drive, flash it flawlessly with **balenaEtcher**, configure your BIOS boot settings, and set up a smooth **Dual Boot** so both operating systems coexist peacefully while keeping all your personal files 100% safe.</p></div>
+<div class="love-card"><p>💖 <strong>For my beautiful girlfriend:</strong> I prepared this step-by-step guide especially for you with all my love, designed so that you can install Ubuntu on your Windows laptop completely stress-free, leaving behind all the errors and frustration you experienced with Rufus. Here you will learn how to revive your USB flash drive, flash it flawlessly with balenaEtcher, configure your BIOS boot settings, and set up a smooth Dual Boot so both operating systems coexist peacefully while keeping all your personal files 100% safe.</p></div>
 
 <hr />
 <h2 id="what-exactly-are-we-doing-its-called-dual-boot-dualboot">💡 What Exactly Are We Doing? It's Called DUAL BOOT (Dualboot)</h2>
@@ -663,7 +115,7 @@
 <li><strong>The Trap of Rufus Advanced Settings:</strong> Rufus prompts you with confusing technical choices regarding partition schemes (<em>GPT vs. MBR</em>), target systems (<em>UEFI vs. BIOS</em>), file systems (<em>FAT32 vs. NTFS</em>), and whether to write in <em>ISO Image Mode</em> or <em>DD Image Mode</em>. If any setting doesn't perfectly align with your modern UEFI motherboard, the EFI boot partition gets misconfigured or corrupted.</li>
 <li><strong>Blocked Boot Signatures (Secure Boot):</strong> When not written in pure bit-by-bit disk cloning mode (DD mode), your laptop's UEFI BIOS detected modified or unsigned bootloaders that it considered "unauthorized" by factory policy, blocking the boot sequence for security reasons.</li>
 <li><strong>Immediate Boot Fallback:</strong> Unable to boot the USB drive due to the security lock or damaged partition structure, your laptop did the only thing it was programmed to do to keep you safe: bypass the USB drive and boot straight into <strong>Windows</strong> as usual.</li>
-<li><strong>The Solution with balenaEtcher:</strong> <strong>balenaEtcher</strong> does not confuse you with dozens of technical drop-downs. It performs a <strong>pure, bit-by-bit identical clone</strong> (native raw DD mode) of the official Ubuntu image, preserving Canonical's official cryptographic UEFI signatures and performing a 100% byte-level checksum validation before finishing.</li>
+<li><strong>The Solution with balenaEtcher:</strong> This tool does not confuse you with dozens of technical drop-downs. It performs a <strong>pure, bit-by-bit identical clone</strong> (native raw DD mode) of the official Ubuntu image, preserving Canonical's official cryptographic UEFI signatures and performing a 100% byte-level checksum validation before finishing.</li>
 </ol>
 <hr />
 <h2 id="pre-requisite-check-checking-disabling-bitlocker-or-device-encryption">🛡️ Pre-Requisite Check: Checking &amp; Disabling BitLocker or Device Encryption</h2>
@@ -690,14 +142,14 @@
 <h4 id="method-1-from-settings-windows-11-home-device-encryption">🔹 Method 1: From Settings (Windows 11 Home / Device Encryption)</h4>
 <ol>
 <li>Press <strong><code>Win + I</code></strong> to open the Windows <strong>Settings</strong> app.</li>
-<li>Go to <strong>Privacy &amp; security</strong> → <strong>Device encryption</strong> <em>(Cifrado de dispositivo)</em>.</li>
-<li>Toggle the switch to <strong><code>Off</code></strong> <em>(Desactivado)</em> and click <strong>Turn off</strong> to confirm.</li>
+<li>Go to <strong>Privacy &amp; security</strong> → <strong>Device encryption</strong> (Cifrado de dispositivo).</li>
+<li>Toggle the switch to <strong><code>Off</code></strong> (Desactivado) and click <strong>Turn off</strong> to confirm.</li>
 </ol>
 <h4 id="method-2-from-control-panel-windows-11-pro-enterprise-or-education">🔹 Method 2: From Control Panel (Windows 11 Pro, Enterprise, or Education)</h4>
 <ol>
-<li>Open the Start menu, type <strong><code>Manage BitLocker</code></strong> <em>(Administrar BitLocker)</em>, and press <code>Enter</code>.</li>
+<li>Open the Start menu, type <strong><code>Manage BitLocker</code></strong> (Administrar BitLocker), and press <code>Enter</code>.</li>
 <li>Locate your encrypted drive (typically the <strong><code>C:</code></strong> drive).</li>
-<li>Click <strong><code>Turn off BitLocker</code></strong> <em>(Desactivar BitLocker)</em> and confirm the prompt.</li>
+<li>Click <strong><code>Turn off BitLocker</code></strong> (Desactivar BitLocker) and confirm the prompt.</li>
 <li>Wait for Windows to complete the background decryption process.</li>
 </ol>
 <h4 id="method-3-using-the-command-line-powershell-or-command-prompt-as-administrator">🔹 Method 3: Using the Command Line (PowerShell or Command Prompt as Administrator)</h4>
@@ -1031,7 +483,7 @@ This visual reference was captured from a YouTube demonstration on a <strong>Hua
 <li>Power on your laptop and press <code>F2</code> repeatedly until the BIOS screen appears.</li>
 <li>Use the arrow keys <code>↑ / ↓</code> to move down to your USB flash drive line:<br />
 <code>USB Device 1: ... &lt;Disable&gt;</code></li>
-<li>Press <strong><code>F5</code> or <code>F6</code></strong> (or press <code>Enter</code>) to toggle the value from <code>&lt;Disable&gt;</code> to <strong><code>&lt;Enable&gt;</code></strong> <em>(green box)</em>.</li>
+<li>Press <strong><code>F5</code> or <code>F6</code></strong> (or press <code>Enter</code>) to toggle the value from <code>&lt;Disable&gt;</code> to <strong><code>&lt;Enable&gt;</code></strong> (green box).</li>
 <li>Use the arrow keys to scroll down to <strong><code>Secure Boot</code></strong>.</li>
 <li>Press <strong><code>F5</code> or <code>F6</code></strong> to toggle from <code>&lt;Enable&gt;</code> to <strong><code>&lt;Disable&gt;</code></strong>.</li>
 <li><strong>Save Changes and Exit:</strong> Press <strong><code>F10</code> (cyan box in the lower corner)</strong> to save and exit (<em>Save and Exit</em>). Confirm by pressing <code>Enter</code>.</li>
@@ -1046,14 +498,14 @@ This visual reference was captured from a YouTube demonstration on a <strong>Hua
 <ol>
 <li>I entered the BIOS using <strong><code>Fn + F2</code></strong>.</li>
 <li>I used the right arrow key <code>→</code> to navigate to the <strong><code>Security</code></strong> tab <em>(cyan box)</em>.</li>
-<li>I moved down to <strong><code>Secure Boot</code></strong> (which was set to <code>[Enabled]</code>, <em>red box</em>) and switched it to <strong><code>[Disabled]</code></strong> <em>(green box)</em>:</li>
+<li>I moved down to <strong><code>Secure Boot</code></strong> (which was set to <code>[Enabled]</code>, <em>red box</em>) and switched it to <strong><code>[Disabled]</code></strong> (green box):</li>
 </ol>
 <p align="center">
   <img src="./imagenes_guia/16_bios_lenovo_disable.jpg" alt="Disable Secure Boot in Lenovo" width="700"/>
 </p>
 
 <ol>
-<li>I pressed <strong><code>F10</code></strong> to save changes (<em>Save configuration changes and exit now?</em>) and selected <strong><code>[Yes]</code></strong> <em>(green box)</em>:</li>
+<li>I pressed <strong><code>F10</code></strong> to save changes (<em>Save configuration changes and exit now?</em>) and selected <strong><code>[Yes]</code></strong> (green box):</li>
 </ol>
 <p align="center">
   <img src="./imagenes_guia/18_bios_lenovo_guardar_f10.jpg" alt="Save confirmation with F10 on Lenovo" width="550"/>
@@ -1066,7 +518,7 @@ This visual reference was captured from a YouTube demonstration on a <strong>Hua
 <p><p align="center">
   <img src="./imagenes_guia/17_bios_lenovo_alerta_f9.jpg" alt="Setup Confirmation - Load default configuration now" width="550"/>
 </p></p>
-<p><code>F9</code> means <em>Load Default Settings</em>. If the red alert box appears (<em>"Load default configuration now?"</em>), <strong>DO NOT press <code>[YES]</code></strong>, because it will revert your changes and turn Secure Boot back on! Always select <strong><code>[NO]</code></strong> <em>(green box)</em>, and then press <strong><code>F10</code></strong>.</p>
+<p><code>F9</code> means <em>Load Default Settings</em>. If the red alert box appears (<em>"Load default configuration now?"</em>), <strong>DO NOT press <code>[YES]</code></strong>, because it will revert your changes and turn Secure Boot back on! Always select <strong><code>[NO]</code></strong> (green box), and then press <strong><code>F10</code></strong>.</p>
 </blockquote>
 <hr />
 <h2 id="phase-6-booting-from-usb-f12-boot-menu-and-gnu-grub">💻 Phase 6: Booting from USB (F12 Boot Menu and GNU GRUB)</h2>
@@ -1081,7 +533,7 @@ This visual reference was captured from a YouTube demonstration on a <strong>Hua
 </p>
 
 <ul>
-<li>The first option is selected by default: <strong><code>*Try or Install Ubuntu</code></strong> <em>(green box)</em>.</li>
+<li>The first option is selected by default: <strong>Try or Install Ubuntu</strong> (green box).</li>
 <li>Press <strong><code>Enter</code></strong> (or simply wait 5 seconds for it to proceed automatically).</li>
 </ul>
 <hr />
@@ -1123,7 +575,7 @@ You can choose <strong>English</strong> or <strong>Spanish</strong> according to
 
 <ul>
 <li>You do not need to change anything here unless desired.</li>
-<li>Simply click <strong><code>Next</code></strong> <em>(cyan box)</em> to continue.</li>
+<li>Simply click <strong><code>Next</code></strong> (cyan box) to continue.</li>
 </ul>
 <hr />
 <h3 id="step-73-keyboard-layout">Step 7.3: Keyboard Layout</h3>
@@ -1137,7 +589,7 @@ You can choose <strong>English</strong> or <strong>Spanish</strong> according to
 <li><strong>Mandatory test:</strong> Click in the white test box and type:</li>
 <li>Special symbols like <code>@</code>, <code>-</code>, <code>_</code>, <code>/</code></li>
 <li>Accents or language-specific keys</li>
-<li>Once the characters match your physical keyboard, click <strong><code>Next</code></strong> <em>(cyan box)</em>.</li>
+<li>Once the characters match your physical keyboard, click <strong><code>Next</code></strong> (cyan box).</li>
 </ol>
 <hr />
 <h3 id="step-74-internet-connection-wi-fi">Step 7.4: Internet Connection (Wi-Fi)</h3>
@@ -1149,7 +601,7 @@ You can choose <strong>English</strong> or <strong>Spanish</strong> according to
 <ol>
 <li>Select your home Wi-Fi network.</li>
 <li>Enter your password and click <strong>Connect</strong>.</li>
-<li>Click <strong><code>Next</code></strong> <em>(cyan box)</em>.<br />
+<li>Click <strong><code>Next</code></strong> (cyan box).<br />
 <em>(Connecting to the internet allows Ubuntu to download the latest hardware drivers and packages during setup).</em></li>
 </ol>
 <hr />
@@ -1160,8 +612,8 @@ You can choose <strong>English</strong> or <strong>Spanish</strong> according to
 </p>
 
 <ul>
-<li>Choose: <strong><code>Install Ubuntu</code></strong> <em>(Install Ubuntu alongside or instead of your current operating system - green box)</em>.</li>
-<li>Click <strong><code>Next</code></strong> <em>(cyan box)</em>.</li>
+<li>Choose: <strong><code>Install Ubuntu</code></strong> (Install Ubuntu alongside or instead of your current operating system - green box).</li>
+<li>Click <strong><code>Next</code></strong> (cyan box).</li>
 </ul>
 <hr />
 <h3 id="step-76-installation-type-interactive-installation">Step 7.6: Installation Type (<code>Interactive installation</code>)</h3>
@@ -1171,9 +623,9 @@ You can choose <strong>English</strong> or <strong>Spanish</strong> according to
 </p>
 
 <ul>
-<li>✅ Select <strong><code>Interactive installation</code></strong> <em>(green box)</em>.<br />
+<li>✅ Select <strong><code>Interactive installation</code></strong> (green box).<br />
   This option gives you full visual review and control over every screen.</li>
-<li>Click <strong><code>Next</code></strong> <em>(cyan box)</em>.</li>
+<li>Click <strong><code>Next</code></strong> (cyan box).</li>
 </ul>
 <hr />
 <h3 id="step-77-optimization-and-third-party-software">Step 7.7: Optimization and Third-Party Software</h3>
@@ -1187,7 +639,7 @@ You can choose <strong>English</strong> or <strong>Spanish</strong> according to
 <strong>Always check this box!</strong> It installs proprietary drivers so your Wi-Fi card and graphics run at top performance.</li>
 <li>☑️ <strong><code>Download and install support for additional media formats</code>:</strong><br />
    Check this box so you can play music and video formats (MP4, MP3) smoothly right out of the box.</li>
-<li>Click <strong><code>Next</code></strong> <em>(cyan box)</em>.</li>
+<li>Click <strong><code>Next</code></strong> (cyan box).</li>
 </ol>
 <hr />
 <h2 id="phase-8-the-most-critical-step-dual-boot-alongside-windows">🚨 Phase 8: The Most Critical Step! Dual Boot Alongside Windows</h2>
@@ -1219,7 +671,7 @@ Read this section carefully to understand exactly what you will see on your scre
 <li>🛑 <strong><code>Erase disk and install Ubuntu</code> (MAXIMUM DANGER! - Bottom red box):</strong>  </li>
 <li>This wipes the entire hard drive. <strong>Never select this option.</strong></li>
 </ol>
-<p>Once you have selected <strong>alongside Windows Boot Manager</strong>, click <strong><code>Next</code></strong> <em>(cyan box)</em>.</p>
+<p>Once you have selected <strong>alongside Windows Boot Manager</strong>, click <strong><code>Next</code></strong> (cyan box).</p>
 <hr />
 <h2 id="phase-9-disk-space-allocation-the-slider">⚖️ Phase 9: Disk Space Allocation (The Slider)</h2>
 <p>After selecting the <em>alongside</em> option, you will see the <strong><code>Choose where to install Ubuntu</code></strong> screen with an interactive partition slider:</p>
@@ -1230,11 +682,11 @@ Read this section carefully to understand exactly what you will see on your scre
 <h3 id="how-to-divide-your-hard-drive-space">📐 How to Divide Your Hard Drive Space:</h3>
 <ul>
 <li><strong>In my photo:</strong> You see the drive shared between Ubuntu and Kali.</li>
-<li><strong>On your laptop:</strong> You will see the drive shared between <strong>Ubuntu</strong> and your <strong>Windows</strong> system.</li>
+<li><strong>On your laptop:</strong> You will see the drive shared between Ubuntu and your Windows system.</li>
 <li><strong>How to use the slider:</strong> Click and hold the center divider handle with your mouse and drag it left or right:</li>
 <li><strong>Recommended space for Ubuntu:</strong> Allocate between <strong>40 GB and 70 GB</strong> (plenty of room for the OS, coding tools, study environments, and files).</li>
 <li><strong>Space for Windows:</strong> Make sure to leave comfortable free space on your Windows side for its normal updates and tasks.</li>
-<li>Once satisfied with the balance, click <strong><code>Next</code></strong> <em>(cyan box)</em>.</li>
+<li>Once satisfied with the balance, click <strong><code>Next</code></strong> (cyan box).</li>
 </ul>
 <hr />
 <h2 id="phase-10-security-and-encryption-options">🔒 Phase 10: Security and Encryption Options</h2>
@@ -1247,7 +699,7 @@ Read this section carefully to understand exactly what you will see on your scre
 <li>In a Dual Boot setup alongside Windows, the recommended setting is:<br />
   ⚪ <strong><code>No encryption</code></strong>.<br />
 <em>(Encrypting the partition introduces additional pre-boot password prompts that can cause boot conflicts with the Windows Boot Manager).</em></li>
-<li>Click <strong><code>Next</code></strong> <em>(cyan box)</em>.</li>
+<li>Click <strong><code>Next</code></strong> (cyan box).</li>
 </ul>
 <hr />
 <h2 id="phase-11-creating-your-user-account">👤 Phase 11: Creating Your User Account</h2>
@@ -1267,7 +719,7 @@ This password will be your administrative master key (<strong><code>sudo</code><
 </blockquote>
 </li>
 <li><strong>Login behavior:</strong> Select <strong><code>Require my password to log in</code></strong> for privacy and security.</li>
-<li>Click <strong><code>Next</code></strong> <em>(cyan box)</em>.</li>
+<li>Click <strong><code>Next</code></strong> (cyan box).</li>
 </ol>
 <hr />
 <h2 id="phase-12-timezone-reviewing-the-final-summary">🕒 Phase 12: Timezone &amp; Reviewing the Final Summary</h2>
@@ -1311,6 +763,10 @@ This password will be your administrative master key (<strong><code>sudo</code><
 <hr />
 <h2 id="phase-14-your-new-dual-boot-choosing-between-ubuntu-or-windows">🐧 Phase 14: Your New Dual Boot: Choosing Between Ubuntu or Windows</h2>
 <p>From now on, every time you power on your laptop, the <strong>GNU GRUB Menu</strong> screen will appear:</p>
+<p align="center">
+  <img src="./imagenes_guia/35_grub_dualboot_menu.jpg" alt="GNU GRUB Dual Boot Menu" width="650"/>
+</p>
+
 <pre><code class="language-text">                       GNU GRUB version 2.12
  -----------------------------------------------------------------
   *Ubuntu

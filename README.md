@@ -6,7 +6,7 @@
 [![Live Web](https://img.shields.io/badge/Live_Site-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](https://minilux0.github.io/ubuntu-dualboot-guide/)
 [![Download PDF](https://img.shields.io/badge/Download_PDF-21_MB-dc2626?style=for-the-badge&logo=adobeacrobatreader)](https://minilux0.github.io/ubuntu-dualboot-guide/ubuntu_dualboot_guide.pdf)
 [![Spanish Version](https://img.shields.io/badge/Versi%C3%B3n-Espa%C3%B1ol-38bdf8?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/es.html)
-[![Screenshots](https://img.shields.io/badge/Screenshots-32_Annotated_Photos-orange?style=for-the-badge&logo=googlephotos)](./imagenes_guia/)
+[![Screenshots](https://img.shields.io/badge/Screenshots-33_Annotated_Photos-orange?style=for-the-badge&logo=googlephotos)](./imagenes_guia/)
 [![Dedicated to](https://img.shields.io/badge/Dedicated_With_Love_To-%E9%92%B1%E5%A5%95%E5%BD%A4-f43f5e?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/)
 
 <br>
@@ -39,7 +39,7 @@ Every single screen, BIOS menu, and installer dialog was photographed, tested, a
 | 🚫 **Rufus Trap Solved** | Explains why Rufus caused boot loops and how **balenaEtcher** solves it via bit-by-bit cloning. |
 | 🔑 **BitLocker Safe** | Step-by-step methods to verify and disable Windows Device Encryption before resizing partitions. |
 | 💻 **BIOS / UEFI Ready** | Clear instructions for both Huawei MateBook (InsydeH2O) and Lenovo BIOS screens. |
-| 📸 **32 Real Photos** | Authentic, annotated photos with color-coded callouts for every step. |
+| 📸 **33 Real Photos** | Authentic, annotated photos with color-coded callouts for every step, including GNU GRUB. |
 
 ---
 

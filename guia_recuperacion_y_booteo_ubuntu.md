@@ -1,6 +1,6 @@
 # 🐧 The Definitive Visual Guide: Installing Ubuntu with balenaEtcher on your Windows Laptop (Safe Dual Boot)
 
-> **💖 For my beautiful girlfriend:** I prepared this step-by-step guide especially for you with all my love, designed so that you can install **Ubuntu** on your **Windows** laptop completely stress-free, leaving behind all the errors and frustration you experienced with Rufus. Here you will learn how to revive your USB flash drive, flash it flawlessly with **balenaEtcher**, configure your BIOS boot settings, and set up a smooth **Dual Boot** so both operating systems coexist peacefully while keeping all your personal files 100% safe.
+> **💖 For my beautiful girlfriend:** I prepared this step-by-step guide especially for you with all my love, designed so that you can install Ubuntu on your Windows laptop completely stress-free, leaving behind all the errors and frustration you experienced with Rufus. Here you will learn how to revive your USB flash drive, flash it flawlessly with balenaEtcher, configure your BIOS boot settings, and set up a smooth Dual Boot so both operating systems coexist peacefully while keeping all your personal files 100% safe.
 
 ---
 
@@ -82,7 +82,7 @@ When you tried creating the bootable installer with **Rufus** on your Windows la
 1. **The Trap of Rufus Advanced Settings:** Rufus prompts you with confusing technical choices regarding partition schemes (*GPT vs. MBR*), target systems (*UEFI vs. BIOS*), file systems (*FAT32 vs. NTFS*), and whether to write in *ISO Image Mode* or *DD Image Mode*. If any setting doesn't perfectly align with your modern UEFI motherboard, the EFI boot partition gets misconfigured or corrupted.
 2. **Blocked Boot Signatures (Secure Boot):** When not written in pure bit-by-bit disk cloning mode (DD mode), your laptop's UEFI BIOS detected modified or unsigned bootloaders that it considered "unauthorized" by factory policy, blocking the boot sequence for security reasons.
 3. **Immediate Boot Fallback:** Unable to boot the USB drive due to the security lock or damaged partition structure, your laptop did the only thing it was programmed to do to keep you safe: bypass the USB drive and boot straight into **Windows** as usual.
-4. **The Solution with balenaEtcher:** **balenaEtcher** does not confuse you with dozens of technical drop-downs. It performs a **pure, bit-by-bit identical clone** (native raw DD mode) of the official Ubuntu image, preserving Canonical's official cryptographic UEFI signatures and performing a 100% byte-level checksum validation before finishing.
+4. **The Solution with balenaEtcher:** This tool does not confuse you with dozens of technical drop-downs. It performs a **pure, bit-by-bit identical clone** (native raw DD mode) of the official Ubuntu image, preserving Canonical's official cryptographic UEFI signatures and performing a 100% byte-level checksum validation before finishing.
 
 ---
 
@@ -111,13 +111,13 @@ You can turn off BitLocker through the modern **Settings app**, the classic **Co
 
 #### 🔹 Method 1: From Settings (Windows 11 Home / Device Encryption)
 1. Press **`Win + I`** to open the Windows **Settings** app.
-2. Go to **Privacy & security** → **Device encryption** *(Cifrado de dispositivo)*.
-3. Toggle the switch to **`Off`** *(Desactivado)* and click **Turn off** to confirm.
+2. Go to **Privacy & security** → **Device encryption** (Cifrado de dispositivo).
+3. Toggle the switch to **`Off`** (Desactivado) and click **Turn off** to confirm.
 
 #### 🔹 Method 2: From Control Panel (Windows 11 Pro, Enterprise, or Education)
-1. Open the Start menu, type **`Manage BitLocker`** *(Administrar BitLocker)*, and press `Enter`.
+1. Open the Start menu, type **`Manage BitLocker`** (Administrar BitLocker), and press `Enter`.
 2. Locate your encrypted drive (typically the **`C:`** drive).
-3. Click **`Turn off BitLocker`** *(Desactivar BitLocker)* and confirm the prompt.
+3. Click **`Turn off BitLocker`** (Desactivar BitLocker) and confirm the prompt.
 4. Wait for Windows to complete the background decryption process.
 
 #### 🔹 Method 3: Using the Command Line (PowerShell or Command Prompt as Administrator)
@@ -413,7 +413,7 @@ With your laptop completely powered off, press the power button and immediately 
 1. Power on your laptop and press `F2` repeatedly until the BIOS screen appears.
 2. Use the arrow keys `↑ / ↓` to move down to your USB flash drive line:  
    `USB Device 1: ... <Disable>`
-3. Press **`F5` or `F6`** (or press `Enter`) to toggle the value from `<Disable>` to **`<Enable>`** *(green box)*.
+3. Press **`F5` or `F6`** (or press `Enter`) to toggle the value from `<Disable>` to **`<Enable>`** (green box).
 4. Use the arrow keys to scroll down to **`Secure Boot`**.
 5. Press **`F5` or `F6`** to toggle from `<Enable>` to **`<Disable>`**.
 6. **Save Changes and Exit:** Press **`F10` (cyan box in the lower corner)** to save and exit (*Save and Exit*). Confirm by pressing `Enter`.
@@ -430,13 +430,13 @@ In the photos I took on my Lenovo laptop, the BIOS interface is organized into h
 
 1. I entered the BIOS using **`Fn + F2`**.
 2. I used the right arrow key `→` to navigate to the **`Security`** tab *(cyan box)*.
-3. I moved down to **`Secure Boot`** (which was set to `[Enabled]`, *red box*) and switched it to **`[Disabled]`** *(green box)*:
+3. I moved down to **`Secure Boot`** (which was set to `[Enabled]`, *red box*) and switched it to **`[Disabled]`** (green box):
 
 <p align="center">
   <img src="./imagenes_guia/16_bios_lenovo_disable.jpg" alt="Disable Secure Boot in Lenovo" width="700"/>
 </p>
 
-4. I pressed **`F10`** to save changes (*Save configuration changes and exit now?*) and selected **`[Yes]`** *(green box)*:
+4. I pressed **`F10`** to save changes (*Save configuration changes and exit now?*) and selected **`[Yes]`** (green box):
 
 <p align="center">
   <img src="./imagenes_guia/18_bios_lenovo_guardar_f10.jpg" alt="Save confirmation with F10 on Lenovo" width="550"/>
@@ -450,7 +450,7 @@ In the photos I took on my Lenovo laptop, the BIOS interface is organized into h
 >   <img src="./imagenes_guia/17_bios_lenovo_alerta_f9.jpg" alt="Setup Confirmation - Load default configuration now" width="550"/>
 > </p>
 > 
-> `F9` means *Load Default Settings*. If the red alert box appears (*"Load default configuration now?"*), **DO NOT press `[YES]`**, because it will revert your changes and turn Secure Boot back on! Always select **`[NO]`** *(green box)*, and then press **`F10`**.
+> `F9` means *Load Default Settings*. If the red alert box appears (*"Load default configuration now?"*), **DO NOT press `[YES]`**, because it will revert your changes and turn Secure Boot back on! Always select **`[NO]`** (green box), and then press **`F10`**.
 
 ---
 
@@ -465,7 +465,7 @@ In the photos I took on my Lenovo laptop, the BIOS interface is organized into h
   <img src="./imagenes_guia/21_grub_try_or_install_ubuntu.jpg" alt="GNU GRUB menu with Try or Install Ubuntu highlighted" width="650"/>
 </p>
 
-* The first option is selected by default: **`*Try or Install Ubuntu`** *(green box)*.
+* The first option is selected by default: **Try or Install Ubuntu** (green box).
 * Press **`Enter`** (or simply wait 5 seconds for it to proceed automatically).
 
 ---
@@ -511,7 +511,7 @@ An introductory screen for accessibility settings (vision, hearing, zooming) wil
 </p>
 
 * You do not need to change anything here unless desired.
-* Simply click **`Next`** *(cyan box)* to continue.
+* Simply click **`Next`** (cyan box) to continue.
 
 ---
 
@@ -526,7 +526,7 @@ Here you configure your physical keyboard layout so every key matches what you t
 2. **Mandatory test:** Click in the white test box and type:
    - Special symbols like `@`, `-`, `_`, `/`
    - Accents or language-specific keys
-3. Once the characters match your physical keyboard, click **`Next`** *(cyan box)*.
+3. Once the characters match your physical keyboard, click **`Next`** (cyan box).
 
 ---
 
@@ -539,7 +539,7 @@ The installer will scan for nearby wireless networks:
 
 1. Select your home Wi-Fi network.
 2. Enter your password and click **Connect**.
-3. Click **`Next`** *(cyan box)*.  
+3. Click **`Next`** (cyan box).  
    *(Connecting to the internet allows Ubuntu to download the latest hardware drivers and packages during setup).*
 
 ---
@@ -551,8 +551,8 @@ A screen will ask: *"What do you want to do with Ubuntu?"*:
   <img src="./imagenes_guia/27_instalador_probar_o_instalar.jpg" alt="Install Ubuntu option selected" width="650"/>
 </p>
 
-* Choose: **`Install Ubuntu`** *(Install Ubuntu alongside or instead of your current operating system - green box)*.
-* Click **`Next`** *(cyan box)*.
+* Choose: **`Install Ubuntu`** (Install Ubuntu alongside or instead of your current operating system - green box).
+* Click **`Next`** (cyan box).
 
 ---
 
@@ -563,9 +563,9 @@ Ubuntu will ask how you want to perform the setup:
   <img src="./imagenes_guia/28_instalador_tipo_interactivo.jpg" alt="Interactive installation selected" width="650"/>
 </p>
 
-* ✅ Select **`Interactive installation`** *(green box)*.  
+* ✅ Select **`Interactive installation`** (green box).  
   This option gives you full visual review and control over every screen.
-* Click **`Next`** *(cyan box)*.
+* Click **`Next`** (cyan box).
 
 ---
 
@@ -580,7 +580,7 @@ On the *"Optimise your computer / Install recommended proprietary software?"* sc
    **Always check this box!** It installs proprietary drivers so your Wi-Fi card and graphics run at top performance.
 2. ☑️ **`Download and install support for additional media formats`:**  
    Check this box so you can play music and video formats (MP4, MP3) smoothly right out of the box.
-3. Click **`Next`** *(cyan box)*.
+3. Click **`Next`** (cyan box).
 
 ---
 
@@ -612,7 +612,7 @@ On the *"Optimise your computer / Install recommended proprietary software?"* sc
 3. 🛑 **`Erase disk and install Ubuntu` (MAXIMUM DANGER! - Bottom red box):**  
    * This wipes the entire hard drive. **Never select this option.**
 
-Once you have selected **alongside Windows Boot Manager**, click **`Next`** *(cyan box)*.
+Once you have selected **alongside Windows Boot Manager**, click **`Next`** (cyan box).
 
 ---
 
@@ -626,11 +626,11 @@ After selecting the *alongside* option, you will see the **`Choose where to inst
 
 ### 📐 How to Divide Your Hard Drive Space:
 * **In my photo:** You see the drive shared between Ubuntu and Kali.
-* **On your laptop:** You will see the drive shared between **Ubuntu** and your **Windows** system.
+* **On your laptop:** You will see the drive shared between Ubuntu and your Windows system.
 * **How to use the slider:** Click and hold the center divider handle with your mouse and drag it left or right:
   - **Recommended space for Ubuntu:** Allocate between **40 GB and 70 GB** (plenty of room for the OS, coding tools, study environments, and files).
   - **Space for Windows:** Make sure to leave comfortable free space on your Windows side for its normal updates and tasks.
-* Once satisfied with the balance, click **`Next`** *(cyan box)*.
+* Once satisfied with the balance, click **`Next`** (cyan box).
 
 ---
 
@@ -645,7 +645,7 @@ The **`Encryption and file system`** screen will appear:
 * In a Dual Boot setup alongside Windows, the recommended setting is:  
   ⚪ **`No encryption`**.  
   *(Encrypting the partition introduces additional pre-boot password prompts that can cause boot conflicts with the Windows Boot Manager).*
-* Click **`Next`** *(cyan box)*.
+* Click **`Next`** (cyan box).
 
 ---
 
@@ -665,7 +665,7 @@ On the **`Create your account`** screen, enter your personal details to set up y
    > [!IMPORTANT]
    > This password will be your administrative master key (**`sudo`**). You will need it whenever you install applications or make system changes. Pick a password you will remember easily!
 5. **Login behavior:** Select **`Require my password to log in`** for privacy and security.
-6. Click **`Next`** *(cyan box)*.
+6. Click **`Next`** (cyan box).
 
 ---
 
@@ -715,6 +715,10 @@ When file copying finishes, a dialog will appear saying:
 ## 🐧 Phase 14: Your New Dual Boot: Choosing Between Ubuntu or Windows
 
 From now on, every time you power on your laptop, the **GNU GRUB Menu** screen will appear:
+
+<p align="center">
+  <img src="./imagenes_guia/35_grub_dualboot_menu.jpg" alt="GNU GRUB Dual Boot Menu" width="650"/>
+</p>
 
 ```text
                        GNU GRUB version 2.12
