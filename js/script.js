@@ -10,11 +10,8 @@ function toggleTheme() {
 function updateThemeIcon(theme) {
   const btn = document.getElementById('theme-toggle-btn');
   if (btn) {
-    const isEs = document.documentElement.lang === 'es';
     btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
-    btn.title = theme === 'dark'
-      ? (isEs ? 'Cambiar a modo claro' : 'Switch to Light Mode')
-      : (isEs ? 'Cambiar a modo oscuro' : 'Switch to Dark Mode');
+    btn.title = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
   }
 }
 
@@ -30,7 +27,7 @@ window.addEventListener('scroll', () => {
 
   const topBtn = document.getElementById('back-to-top');
   if (topBtn) {
-    if (winScroll > 400) {
+    if (winScroll > 350) {
       topBtn.classList.add('visible');
     } else {
       topBtn.classList.remove('visible');
@@ -42,17 +39,18 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Dynamic Copy Code Buttons and Initial Setup
+// Dynamic Copy Code Buttons and Checklist Persistence
 document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', saved);
-  updateThemeIcon(saved);
+  // Theme initialization
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon(savedTheme);
 
-  const isEs = document.documentElement.lang === 'es';
-  const copyLabel = isEs ? 'Copiar' : 'Copy';
-  const copiedLabel = isEs ? '¡Copiado!' : 'Copied!';
-
+  // Copy code buttons for pre elements
   document.querySelectorAll('pre').forEach((pre) => {
+    // Skip if already in code-container
+    if (pre.parentElement && pre.parentElement.classList.contains('code-container')) return;
+
     const container = document.createElement('div');
     container.className = 'code-container';
     pre.parentNode.insertBefore(container, pre);
@@ -60,18 +58,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const copyBtn = document.createElement('button');
     copyBtn.className = 'copy-btn';
-    copyBtn.innerText = copyLabel;
+    copyBtn.type = 'button';
+    copyBtn.innerText = 'Copy';
     copyBtn.onclick = () => {
       const codeText = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
-      navigator.clipboard.writeText(codeText).then(() => {
-        copyBtn.innerText = copiedLabel;
-        copyBtn.style.color = '#22c55e';
+      navigator.clipboard.writeText(codeText.trim()).then(() => {
+        copyBtn.innerText = 'Copied!';
+        copyBtn.style.color = '#10b981';
         setTimeout(() => {
-          copyBtn.innerText = copyLabel;
+          copyBtn.innerText = 'Copy';
           copyBtn.style.color = '';
         }, 2000);
       });
     };
     container.appendChild(copyBtn);
+  });
+
+  // Interactive Checklist with LocalStorage persistence
+  const savedChecks = JSON.parse(localStorage.getItem('ubuntu_checklist_state') || '{}');
+  const checklistItems = document.querySelectorAll('.checklist-item');
+
+  checklistItems.forEach((item, index) => {
+    const checkbox = item.querySelector('.checklist-checkbox');
+    if (!checkbox) return;
+
+    // Restore saved state
+    if (savedChecks[index]) {
+      checkbox.checked = true;
+      item.classList.add('checked');
+    }
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        item.classList.add('checked');
+        savedChecks[index] = true;
+      } else {
+        item.classList.remove('checked');
+        delete savedChecks[index];
+      }
+      localStorage.setItem('ubuntu_checklist_state', JSON.stringify(savedChecks));
+    });
   });
 });

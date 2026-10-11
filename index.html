@@ -28,12 +28,21 @@
         <div id="progress-bar"></div>
         <header class="navbar">
           <a href="index.html" class="nav-brand">
-            🐧 <span>Ubuntu Dual Boot</span> <span class="brand-badge">24.04 LTS</span>
+            <span class="nav-logo">🐧</span>
+            <span class="nav-title">Ubuntu Dual Boot</span>
+            <span class="brand-badge">24.04 LTS</span>
           </a>
           <div class="nav-actions">
-            <a href="ubuntu_dualboot_guide.pdf" download class="btn btn-pdf" title="Download PDF Guide (21 MB)">📥 PDF<span class="pdf-size"> (21 MB)</span></a>
+            <a href="ubuntu_dualboot_guide.pdf" download class="btn btn-pdf" title="Download PDF Guide (21 MB)">
+              <span class="btn-icon">📥</span>
+              <span class="btn-label">PDF</span>
+              <span class="pdf-size"> (21 MB)</span>
+            </a>
             <button id="theme-toggle-btn" class="btn btn-theme" onclick="toggleTheme()" title="Toggle Dark/Light Mode">☀️</button>
-            <a href="https://github.com/MiniLux0/ubuntu-dualboot-guide" target="_blank" class="btn btn-outline" title="GitHub Repository">⭐ <span class="git-text">GitHub</span></a>
+            <a href="https://github.com/MiniLux0/ubuntu-dualboot-guide" target="_blank" rel="noopener" class="btn btn-outline" title="GitHub Repository">
+              <span class="btn-icon">⭐</span>
+              <span class="git-text">GitHub</span>
+            </a>
           </div>
         </header>
         
@@ -54,59 +63,68 @@
 </ul>
 <hr />
 <h2 id="step-0-mandatory-precaution-dont-forget-to-back-up-your-files">🛑 Step 0 Mandatory Precaution: Don't Forget to Back Up Your Files!</h2>
-<blockquote>
-<p>🚨 <strong>CAUTION:</strong></p>
-<h3 id="the-1-golden-rule-of-computing">📁 The #1 Golden Rule of Computing:</h3>
-<p>While this Dual Boot process is completely safe and specifically configured to preserve your Windows installation untouched, <strong>the golden rule whenever modifying disk partitions is to create a backup copy of your important files</strong>:</p>
-<ul>
-<li><strong>What to back up:</strong> Your university homework, thesis/research papers, family photos, videos, and any irreplaceable files.</li>
-<li><strong>Where to save them:</strong> Upload them to cloud storage (<strong>Google Drive, OneDrive, or Dropbox</strong>) or copy them to an external hard drive / USB flash drive (different from the installer USB).</li>
-</ul>
-<p><em>Taking 5 minutes to back up your personal files will give you 100% peace of mind throughout the entire installation.</em></p>
-</blockquote>
+<div class="callout callout-caution">
+  <div class="callout-header">
+    <span class="callout-icon">🚨</span>
+    <span class="callout-title">CAUTION: The #1 Golden Rule of Computing</span>
+  </div>
+  <p>While this Dual Boot process is completely safe and specifically configured to preserve your Windows installation untouched, <strong>the golden rule whenever modifying disk partitions is to create a backup copy of your important files</strong>:</p>
+  <ul>
+    <li><strong>What to back up:</strong> Your university homework, thesis/research papers, family photos, videos, and any irreplaceable files.</li>
+    <li><strong>Where to save them:</strong> Upload them to cloud storage (<strong>Google Drive, OneDrive, or Dropbox</strong>) or copy them to an external hard drive / USB flash drive (different from the installer USB).</li>
+  </ul>
+  <p><em>Taking 5 minutes to back up your personal files will give you 100% peace of mind throughout the entire installation.</em></p>
+</div>
 <hr />
 <h2 id="important-note-about-the-photos-in-this-guide-read-this-first">📌 Important Note About the Photos in this Guide: Read this first!</h2>
-<blockquote>
-<p>ℹ️ <strong>NOTE:</strong></p>
-<h3 id="laptop-and-screen-differences-between-ours">💡 Laptop and Screen Differences Between Ours:</h3>
-<p>To document every single second of the process with 100% authentic, real-world screenshots and guide you safely, <strong>I carried out the entire test installation on my personal laptop (a Lenovo where I already have Kali Linux)</strong>.</p>
-<p>Meanwhile, <strong>you will be doing the installation on your Huawei laptop (where you have Windows)</strong>.</p>
-<p>For that reason:
-1. In my photos, you will see the <strong>Lenovo</strong> logo or options mentioning <em>"Kali Linux"</em>.
-2. On your screen, you will see the <strong>Huawei</strong> logo and the official option you must select:<br />
-   👉 <strong><code>Install Ubuntu alongside Windows Boot Manager</code></strong>.
-3. In the BIOS section, I included the exact setup for your <strong>Huawei</strong> (featuring the blue <em>InsydeH2O</em> interface) as well as the photos of how I configured it on my Lenovo.</p>
-<p>In every critical step, I added special callout boxes highlighting what you will see in Windows so you know with absolute certainty which button to click without any fear. Everything else is identical!</p>
-</blockquote>
+<div class="callout callout-note">
+  <div class="callout-header">
+    <span class="callout-icon">ℹ️</span>
+    <span class="callout-title">NOTE: Laptop and Screen Differences Between Ours</span>
+  </div>
+  <p>To document every single second of the process with 100% authentic, real-world screenshots and guide you safely, <strong>I carried out the entire test installation on my personal laptop (a Lenovo where I already have Kali Linux)</strong>.</p>
+  <p>Meanwhile, <strong>you will be doing the installation on your Huawei laptop (where you have Windows)</strong>.</p>
+  <p>For that reason:</p>
+  <ol>
+    <li>In my photos, you will see the <strong>Lenovo</strong> logo or options mentioning <em>"Kali Linux"</em>.</li>
+    <li>On your screen, you will see the <strong>Huawei</strong> logo and the official option you must select:<br />
+       👉 <strong><code>Install Ubuntu alongside Windows Boot Manager</code></strong>.</li>
+    <li>In the BIOS section, I included the exact setup for your <strong>Huawei</strong> (featuring the blue <em>InsydeH2O</em> interface) as well as the photos of how I configured it on my Lenovo.</li>
+  </ol>
+  <p>In every critical step, I added special callout boxes highlighting what you will see in Windows so you know with absolute certainty which button to click without any fear. Everything else is identical!</p>
+</div>
 <hr />
 <h2 id="table-of-contents">📑 Table of Contents</h2>
-<ol>
-<li><a href="#-what-exactly-are-we-doing-its-called-dual-boot-dualboot">What Exactly Are We Doing? It's Called DUAL BOOT (Dualboot)</a></li>
-<li><a href="#-step-0-mandatory-precaution-dont-forget-to-back-up-your-files">Step 0 Mandatory Precaution: Don't Forget to Back Up Your Files!</a></li>
-<li><a href="#-important-note-about-the-photos-in-this-guide-read-this-first">Important Note About the Photos in this Guide</a></li>
-<li><a href="#-1-what-went-wrong-with-rufus-and-why-balenaetcher-is-the-fix">What Went Wrong with Rufus and Why balenaEtcher Is the Fix</a></li>
-<li><a href="#-pre-requisite-check-checking--disabling-bitlocker-or-device-encryption">Pre-Requisite Check: Checking &amp; Disabling BitLocker or Device Encryption</a></li>
-<li><a href="#-phase-1-reviving-and-cleaning-the-usb-flash-drive-in-windows-diskpart">Phase 1: Reviving and Cleaning the USB Flash Drive in Windows (Diskpart)</a></li>
-<li><a href="#-phase-2-downloading-the-official-ubuntu-lts-64-bit-iso">Phase 2: Downloading the Official Ubuntu LTS 64-bit ISO</a></li>
-<li><a href="#-phase-3-why-balenaetcher-and-not-rufus-comparison">Phase 3: Why balenaEtcher and Not Rufus? (Comparison)</a></li>
-<li><a href="#-phase-4-flawless-usb-flashing-with-balenaetcher">Phase 4: Flawless USB Flashing with balenaEtcher</a></li>
-<li><a href="#-phase-5-bios-configuration--resolving-secure-boot">Phase 5: BIOS Configuration &amp; Resolving "Secure Boot"</a><ul>
-<li><a href="#-case-a-insydeh2o-bios-insydeh2o-setup-utility--youtube-reference-example-for-huawei-matebook">Case A: InsydeH2O BIOS (YouTube Reference — Huawei MateBook)</a></li>
-<li><a href="#-case-b-lenovo-bios-lenovo-setup-utility--real-photos-from-my-laptop">Case B: Lenovo BIOS Setup Utility (Real Photos from my Laptop)</a></li>
-</ul>
-</li>
-<li><a href="#-phase-6-booting-from-usb-f12-boot-menu-and-gnu-grub">Phase 6: Booting from USB (F12 Boot Menu and GNU GRUB)</a></li>
-<li><a href="#-phase-7-the-ubuntu-graphical-installation-wizard-step-by-step">Phase 7: The Ubuntu Graphical Installation Wizard (Step by Step)</a></li>
-<li><a href="#-phase-8-the-most-critical-step-dual-boot-alongside-windows">Phase 8: The Most Critical Step! Dual Boot Alongside Windows</a></li>
-<li><a href="#-phase-9-disk-space-allocation-the-slider">Phase 9: Disk Space Allocation (The Slider)</a></li>
-<li><a href="#-phase-10-security-and-encryption-options">Phase 10: Security and Encryption Options</a></li>
-<li><a href="#-phase-11-creating-your-user-account">Phase 11: Creating Your User Account</a></li>
-<li><a href="#-phase-12-timezone--reviewing-the-final-summary">Phase 12: Timezone &amp; Reviewing the Final Summary</a></li>
-<li><a href="#-phase-13-file-copy-progress--safe-reboot">Phase 13: File Copy Progress &amp; Safe Reboot</a></li>
-<li><a href="#-phase-14-your-new-dual-boot-choosing-between-ubuntu-or-windows">Phase 14: Your New Dual Boot: Choosing Between Ubuntu or Windows</a></li>
-<li><a href="#-phase-15-first-steps--system-update-in-ubuntu">Phase 15: First Steps &amp; System Update in Ubuntu</a></li>
-<li><a href="#-final-verification-checklist-certificate-of-success">Final Verification Checklist (Certificate of Success)</a></li>
-</ol>
+<nav class="toc-container" aria-label="Table of contents">
+  <ol class="toc-list">
+    <li><a href="#what-exactly-are-we-doing-its-called-dual-boot-dualboot">What Exactly Are We Doing? It's Called DUAL BOOT (Dualboot)</a></li>
+    <li><a href="#step-0-mandatory-precaution-dont-forget-to-back-up-your-files">Step 0 Mandatory Precaution: Don't Forget to Back Up Your Files!</a></li>
+    <li><a href="#important-note-about-the-photos-in-this-guide-read-this-first">Important Note About the Photos in this Guide</a></li>
+    <li><a href="#1-what-went-wrong-with-rufus-and-why-balenaetcher-is-the-fix">What Went Wrong with Rufus and Why balenaEtcher Is the Fix</a></li>
+    <li><a href="#pre-requisite-check-checking-disabling-bitlocker-or-device-encryption">Pre-Requisite Check: Checking &amp; Disabling BitLocker or Device Encryption</a></li>
+    <li><a href="#phase-1-reviving-and-cleaning-the-usb-flash-drive-in-windows-diskpart">Phase 1: Reviving and Cleaning the USB Flash Drive in Windows (Diskpart)</a></li>
+    <li><a href="#phase-2-downloading-the-official-ubuntu-lts-64-bit-iso">Phase 2: Downloading the Official Ubuntu LTS 64-bit ISO</a></li>
+    <li><a href="#phase-3-why-balenaetcher-and-not-rufus-comparison">Phase 3: Why balenaEtcher and Not Rufus? (Comparison)</a></li>
+    <li><a href="#phase-4-flawless-usb-flashing-with-balenaetcher">Phase 4: Flawless USB Flashing with balenaEtcher</a></li>
+    <li><a href="#phase-5-bios-configuration-resolving-secure-boot">Phase 5: BIOS Configuration &amp; Resolving "Secure Boot"</a>
+      <ul>
+        <li><a href="#case-a-insydeh2o-bios-insydeh2o-setup-utility-youtube-reference-example-for-huawei-matebook">Case A: InsydeH2O BIOS (Huawei MateBook)</a></li>
+        <li><a href="#case-b-lenovo-bios-lenovo-setup-utility-real-photos-from-my-laptop">Case B: Lenovo BIOS Setup Utility (Real Photos)</a></li>
+      </ul>
+    </li>
+    <li><a href="#phase-6-booting-from-usb-f12-boot-menu-and-gnu-grub">Phase 6: Booting from USB (F12 Boot Menu and GNU GRUB)</a></li>
+    <li><a href="#phase-7-the-ubuntu-graphical-installation-wizard-step-by-step">Phase 7: The Ubuntu Graphical Installation Wizard (Step by Step)</a></li>
+    <li><a href="#phase-8-the-most-critical-step-dual-boot-alongside-windows">Phase 8: The Most Critical Step! Dual Boot Alongside Windows</a></li>
+    <li><a href="#phase-9-disk-space-allocation-the-slider">Phase 9: Disk Space Allocation (The Slider)</a></li>
+    <li><a href="#phase-10-security-and-encryption-options">Phase 10: Security and Encryption Options</a></li>
+    <li><a href="#phase-11-creating-your-user-account">Phase 11: Creating Your User Account</a></li>
+    <li><a href="#phase-12-timezone-reviewing-the-final-summary">Phase 12: Timezone &amp; Reviewing the Final Summary</a></li>
+    <li><a href="#phase-13-file-copy-progress-safe-reboot">Phase 13: File Copy Progress &amp; Safe Reboot</a></li>
+    <li><a href="#phase-14-your-new-dual-boot-choosing-between-ubuntu-or-windows">Phase 14: Your New Dual Boot: Choosing Between Ubuntu or Windows</a></li>
+    <li><a href="#phase-15-first-steps-system-update-in-ubuntu">Phase 15: First Steps &amp; System Update in Ubuntu</a></li>
+    <li><a href="#final-verification-checklist-certificate-of-success">Final Verification Checklist (Certificate of Success)</a></li>
+  </ol>
+</nav>
 <hr />
 <h2 id="1-what-went-wrong-with-rufus-and-why-balenaetcher-is-the-fix">🧠 1. What Went Wrong with Rufus and Why balenaEtcher Is the Fix</h2>
 <p>When you tried creating the bootable installer with <strong>Rufus</strong> on your Windows laptop, several technical factors triggered a chain reaction that caused the installation to fail or caused your laptop to "bounce" straight back into Windows:</p>
@@ -118,14 +136,16 @@
 </ol>
 <hr />
 <h2 id="pre-requisite-check-checking-disabling-bitlocker-or-device-encryption">🛡️ Pre-Requisite Check: Checking &amp; Disabling BitLocker or Device Encryption</h2>
-<blockquote>
-<p>📌 <strong>IMPORTANT:</strong></p>
-<h3 id="why-this-check-is-critical-for-your-laptop-and-not-for-mine">🔍 Why this check is critical for your laptop and not for mine:</h3>
-<ul>
-<li><strong>On your Windows laptop (Windows + Ubuntu):</strong> Checking drive encryption is a vital precaution before altering disk partitions. On many modern laptops running Windows 11 (such as Huawei, HP, Dell, Asus, or Lenovo models), <strong>BitLocker</strong> or <strong>Device Encryption</strong> comes enabled by default from the factory.</li>
-<li><strong>On my Lenovo laptop (Kali Linux + Ubuntu):</strong> BitLocker does not apply because there is no encrypted Windows partition present.</li>
-</ul>
-</blockquote>
+<div class="callout callout-warning">
+  <div class="callout-header">
+    <span class="callout-icon">📌</span>
+    <span class="callout-title">IMPORTANT: Why this check is critical for your laptop and not for mine</span>
+  </div>
+  <ul>
+    <li><strong>On your Windows laptop (Windows + Ubuntu):</strong> Checking drive encryption is a vital precaution before altering disk partitions. On many modern laptops running Windows 11 (such as Huawei, HP, Dell, Asus, or Lenovo models), <strong>BitLocker</strong> or <strong>Device Encryption</strong> comes enabled by default from the factory.</li>
+    <li><strong>On my Lenovo laptop (Kali Linux + Ubuntu):</strong> BitLocker does not apply because there is no encrypted Windows partition present.</li>
+  </ul>
+</div>
 <p>Before installing Ubuntu alongside Windows, it is essential to check whether your Windows system drive is encrypted and turn it off so Ubuntu can safely resize your partition.</p>
 <h3 id="why-does-this-matter">❓ Why does this matter?</h3>
 <p>The Ubuntu installer cannot resize or write into an encrypted Windows NTFS partition. If BitLocker remains on, the installer will either fail to detect Windows (preventing the <em>"Install Ubuntu alongside Windows Boot Manager"</em> option from showing up) or refuse to shrink the drive.</p>
@@ -155,24 +175,24 @@
 <ol>
 <li>Right-click the Windows Start button (<code>Win + X</code>) and choose <strong>Terminal (Admin)</strong> or <strong>Command Prompt (Administrator)</strong> / <strong>PowerShell (Administrator)</strong>.</li>
 <li>Check your current encryption status by typing:
-   <code>cmd
-   manage-bde -status</code>
-   <em>(Look for <code>Percentage Encrypted</code> and <code>Protection Status</code>).</em></li>
+<pre><code class="language-cmd">manage-bde -status</code></pre>
+<em>(Look for <code>Percentage Encrypted</code> and <code>Protection Status</code>).</em></li>
 <li>To disable BitLocker on a specific drive (for example, <code>C:</code>), execute:
-   <code>cmd
-   manage-bde -off C:</code>
-   <em>(Alternatively, in PowerShell you can run the official cmdlet:</em> <code>Disable-BitLocker -MountPoint "C:"</code><em>).</em></li>
+<pre><code class="language-cmd">manage-bde -off C:</code></pre>
+<em>(Alternatively, in PowerShell you can run the official cmdlet: <code>Disable-BitLocker -MountPoint "C:"</code>).</em></li>
 </ol>
-<blockquote>
-<p>⚠️ <strong>WARNING:</strong></p>
-<h3 id="important-decryption-notice">⏳ Important Decryption Notice:</h3>
-<ul>
-<li>Windows will begin decrypting your drive in the background. You can continue using your laptop normally while this process runs.</li>
-<li><strong>DO NOT forcefully turn off or unplug your laptop during decryption.</strong></li>
-<li>To check if it has finished, run <code>manage-bde -status</code> again until it shows <strong><code>Percentage Encrypted: 0.0%</code></strong> and <strong><code>Protection Status: Protection Off</code></strong>.</li>
-<li>For advanced management cmdlets and parameters, refer to the <a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/">official Microsoft Learn BitLocker documentation</a>.</li>
-</ul>
-</blockquote>
+<div class="callout callout-warning">
+  <div class="callout-header">
+    <span class="callout-icon">⚠️</span>
+    <span class="callout-title">WARNING: Important Decryption Notice</span>
+  </div>
+  <ul>
+    <li>Windows will begin decrypting your drive in the background. You can continue using your laptop normally while this process runs.</li>
+    <li><strong>DO NOT forcefully turn off or unplug your laptop during decryption.</strong></li>
+    <li>To check if it has finished, run <code>manage-bde -status</code> again until it shows <strong><code>Percentage Encrypted: 0.0%</code></strong> and <strong><code>Protection Status: Protection Off</code></strong>.</li>
+    <li>For advanced management cmdlets and parameters, refer to the <a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/" target="_blank" rel="noopener">official Microsoft Learn BitLocker documentation</a>.</li>
+  </ul>
+</div>
 <hr />
 <h3 id="visual-video-tutorial">🎥 Visual Video Tutorial:</h3>
 <p>If you would like to see the exact visual step-by-step process of turning off BitLocker, you can follow this video guide:
@@ -185,10 +205,13 @@
 <li><strong>Do not simply click "Suspend protection":</strong> Suspending BitLocker <strong>is not the same as decrypting the drive</strong>. Ubuntu official documentation notes that for certain installer releases, suspending protection is insufficient for guided dual-boot installation; turning off device encryption and waiting for full decryption is required.</li>
 <li><strong>If you are unsure how to proceed:</strong> Pause at this step and verify the encryption status calmly before continuing.</li>
 </ul>
-<blockquote>
-<p>🚨 <strong>CAUTION:</strong>
-<strong>🛑 Golden Rule:</strong> Never delete partitions or accept an option that erases Windows in an attempt to solve a disk detection problem.</p>
-</blockquote>
+<div class="callout callout-caution">
+  <div class="callout-header">
+    <span class="callout-icon">🚨</span>
+    <span class="callout-title">CAUTION: Golden Rule</span>
+  </div>
+  <p><strong>🛑 Golden Rule:</strong> Never delete partitions or accept an option that erases Windows in an attempt to solve a disk detection problem.</p>
+</div>
 <hr />
 <h2 id="phase-1-reviving-and-cleaning-the-usb-flash-drive-in-windows-diskpart">🛠️ Phase 1: Reviving and Cleaning the USB Flash Drive in Windows (Diskpart)</h2>
 <p>Because the previous Rufus attempt left corrupted or partial partitions on the USB drive, we will wipe it completely clean and reformat it like new using Windows' built-in command-line tool: <code>diskpart</code>.</p>
@@ -220,15 +243,17 @@
   <img src="./images/03_list_disk.png" alt="Output of list disk showing Disk 0 and Disk 1" width="700"/>
 </p>
 
-<blockquote>
-<p>📌 <strong>IMPORTANT:</strong></p>
-<h3 id="critical-safety-rule-identify-your-usb-drive-by-size">🛑 CRITICAL SAFETY RULE (Identify your USB drive by size):</h3>
-<ul>
-<li><strong>In the first attempt in the screenshot:</strong> Only <code>Disk 0</code> appeared (the laptop's 931 GB internal hard drive). If this happens to you, Windows <strong>has not recognized your USB drive yet</strong>. Unplug it, firmly plug it into another USB port, and type <code>list disk</code> again.</li>
-<li><strong>In the second attempt:</strong> Once properly connected, <strong><code>Disk 1</code> with 28 GB (green box)</strong> appears. That is your USB flash drive!</li>
-</ul>
-<p>🚨 <strong>CRITICAL WARNING:</strong> Never select <strong>Disk 0 (red box)</strong>, because that is your main Windows hard drive! Always select the disk number that matches your USB drive's capacity (in this example, <strong>Disk 1</strong>).</p>
-</blockquote>
+<div class="callout callout-caution">
+  <div class="callout-header">
+    <span class="callout-icon">🛑</span>
+    <span class="callout-title">CRITICAL SAFETY RULE: Identify your USB drive by size</span>
+  </div>
+  <ul>
+    <li><strong>In the first attempt in the screenshot:</strong> Only <code>Disk 0</code> appeared (the laptop's 931 GB internal hard drive). If this happens to you, Windows <strong>has not recognized your USB drive yet</strong>. Unplug it, firmly plug it into another USB port, and type <code>list disk</code> again.</li>
+    <li><strong>In the second attempt:</strong> Once properly connected, <strong><code>Disk 1</code> with 28 GB (green box)</strong> appears. That is your USB flash drive!</li>
+  </ul>
+  <p>🚨 <strong>CRITICAL WARNING:</strong> Never select <strong>Disk 0 (red box)</strong>, because that is your main Windows hard drive! Always select the disk number that matches your USB drive's capacity (in this example, <strong>Disk 1</strong>).</p>
+</div>
 <hr />
 <h3 id="step-13-select-and-clean-the-usb-drive">Step 1.3: Select and Clean the USB Drive</h3>
 <ol>
@@ -261,14 +286,16 @@ exit
   <img src="./images/05_formatear_y_asignar.png" alt="Partitioning, formatting and assign completed" width="700"/>
 </p>
 
-<blockquote>
-<p>💡 <strong>TIP:</strong></p>
-<h3 id="your-usb-flash-drive-is-back-to-life">🎉 Your USB Flash Drive is Back to Life!</h3>
-<ul>
-<li><strong><code>format fs=fat32 quick</code> (green box):</strong> Restored the USB drive into a clean, healthy, blank slate ready to receive any operating system.</li>
-<li><strong><code>assign</code> (cyan box):</strong> Assigned a fresh drive letter in Windows. At this exact moment, you will hear the Windows <em>"device connected"</em> chime, and your drive will reappear clean and empty in File Explorer (<em>This PC</em>).</li>
-</ul>
-</blockquote>
+<div class="callout callout-success">
+  <div class="callout-header">
+    <span class="callout-icon">🎉</span>
+    <span class="callout-title">SUCCESS: Your USB Flash Drive is Back to Life!</span>
+  </div>
+  <ul>
+    <li><strong><code>format fs=fat32 quick</code> (green box):</strong> Restored the USB drive into a clean, healthy, blank slate ready to receive any operating system.</li>
+    <li><strong><code>assign</code> (cyan box):</strong> Assigned a fresh drive letter in Windows. At this exact moment, you will hear the Windows <em>"device connected"</em> chime, and your drive will reappear clean and empty in File Explorer (<em>This PC</em>).</li>
+  </ul>
+</div>
 <p>To close the console window completely, type <code>exit</code> one more time:</p>
 <p align="center">
   <img src="./images/06_salir_diskpart.png" alt="Exit DiskPart with exit command" width="600"/>
@@ -293,11 +320,13 @@ exit
 </li>
 <li>This is exclusively for specialized ARM chips (such as Qualcomm Snapdragon X Elite or Raspberry Pi boards). If you download this, your laptop will not be able to boot it.</li>
 </ol>
-<blockquote>
-<p>ℹ️ <strong>NOTE:</strong>
-<strong>What does LTS mean?</strong><br />
-You will see the letters <strong>LTS</strong> (<em>Long Term Support</em>). This means it is the enterprise-grade, rock-solid stable version designed for daily productivity, featuring 5 years of guaranteed official security updates without experimental changes that could disrupt your bootloader.</p>
-</blockquote>
+<div class="callout callout-note">
+  <div class="callout-header">
+    <span class="callout-icon">ℹ️</span>
+    <span class="callout-title">NOTE: What does LTS mean?</span>
+  </div>
+  <p>You will see the letters <strong>LTS</strong> (<em>Long Term Support</em>). This means it is the enterprise-grade, rock-solid stable version designed for daily productivity, featuring 5 years of guaranteed official security updates without experimental changes that could disrupt your bootloader.</p>
+</div>
 <p align="center">
   <img src="./images/08_descarga_web_ubuntu.png" alt="Official Intel or AMD 64-bit 5.9GB download button" width="750"/>
 </p>
@@ -383,20 +412,22 @@ You will see the letters <strong>LTS</strong> (<em>Long Term Support</em>). This
 <li>Within a few minutes, you will see the bright green notice: <strong>Flash Complete!</strong>. That's it! You can safely close balenaEtcher.</li>
 </ul>
 <hr />
-<blockquote>
-<p>⚠️ <strong>WARNING:</strong></p>
-<h3 id="red-alert-the-windows-trap-you-need-to-format-the-disk-before-you-can-use-it">🚨 RED ALERT! The Windows Trap: "You need to format the disk before you can use it"</h3>
-<p>As soon as balenaEtcher finishes flashing, Windows will detect Linux filesystem partitions that it natively cannot read. Instantly, Windows will pop up this dialog box:</p>
-<p><p align="center">
-  <img src="./images/12_alerta_formatear_windows.png" alt="Windows format disk warning dialog" width="450"/>
-</p></p>
-<ul>
-<li><strong>🛑 Why does it say "The disk is write-protected" if you try to format it?</strong><br />
-  This is actually a fantastic safeguard! balenaEtcher and Ubuntu intentionally lock the partition in read-only mode <strong>specifically to stop Windows from damaging the installer you just created</strong>.  </li>
-<li><strong>✅ What should you do?</strong><br />
-  Firmly click <strong><code>Cancel</code> (green box)</strong> or close the window by clicking the <code>X</code>. <strong>NEVER agree to format it</strong>, because doing so would wipe Ubuntu and force you to start all over again.</li>
-</ul>
-</blockquote>
+<div class="callout callout-warning">
+  <div class="callout-header">
+    <span class="callout-icon">⚠️</span>
+    <span class="callout-title">RED ALERT! The Windows Trap: "You need to format the disk before you can use it"</span>
+  </div>
+  <p>As soon as balenaEtcher finishes flashing, Windows will detect Linux filesystem partitions that it natively cannot read. Instantly, Windows will pop up this dialog box:</p>
+  <div class="callout-media">
+    <img src="./images/12_alerta_formatear_windows.png" alt="Windows format disk warning dialog" />
+  </div>
+  <ul>
+    <li><strong>🛑 Why does it say "The disk is write-protected" if you try to format it?</strong><br />
+      This is actually a fantastic safeguard! balenaEtcher and Ubuntu intentionally lock the partition in read-only mode <strong>specifically to stop Windows from damaging the installer you just created</strong>.</li>
+    <li><strong>✅ What should you do?</strong><br />
+      Firmly click <strong><code>Cancel</code> (green box)</strong> or close the window by clicking the <code>X</code>. <strong>NEVER agree to format it</strong>, because doing so would wipe Ubuntu and force you to start all over again.</li>
+  </ul>
+</div>
 <hr />
 <h3 id="why-do-two-drives-d-and-e-now-appear-in-this-pc">❓ Why do two drives (<code>D:</code> and <code>E:</code>) now appear in "This PC"?</h3>
 <p>If you open File Explorer, you will notice that your single physical USB stick is now displayed as two separate drive letters:</p>
@@ -457,11 +488,13 @@ You will see the letters <strong>LTS</strong> (<em>Long Term Support</em>). This
 </table>
 <hr />
 <h3 id="case-a-insydeh2o-bios-insydeh2o-setup-utility-youtube-reference-example-for-huawei-matebook">💻 Case A: InsydeH2O BIOS (<code>InsydeH2O Setup Utility</code> — YouTube Reference Example for Huawei MateBook)</h3>
-<blockquote>
-<p>ℹ️ <strong>NOTE:</strong>
-<strong>🎬 About this screenshot:</strong><br />
-This visual reference was captured from a YouTube demonstration on a <strong>Huawei MateBook</strong>. Many modern Windows laptops (Huawei, Acer, certain HP models, etc.) use this exact <strong>InsydeH2O</strong> BIOS layout, characterized by a single blue screen with a vertical list. If your laptop's BIOS looks like this, follow these steps:</p>
-</blockquote>
+<div class="callout callout-note">
+  <div class="callout-header">
+    <span class="callout-icon">ℹ️</span>
+    <span class="callout-title">NOTE: About this screenshot</span>
+  </div>
+  <p>This visual reference was captured from a YouTube demonstration on a <strong>Huawei MateBook</strong>. Many modern Windows laptops (Huawei, Acer, certain HP models, etc.) use this exact <strong>InsydeH2O</strong> BIOS layout, characterized by a single blue screen with a vertical list. If your laptop's BIOS looks like this, follow these steps:</p>
+</div>
 <p align="center">
   <img src="./images/14_bios_huawei.png" alt="InsydeH2O BIOS screen taken from YouTube" width="750"/>
 </p>
@@ -510,15 +543,17 @@ This visual reference was captured from a YouTube demonstration on a <strong>Hua
   <img src="./images/18_bios_lenovo_guardar_f10.jpg" alt="Save confirmation with F10 on Lenovo" width="550"/>
 </p>
 
-<blockquote>
-<p>⚠️ <strong>WARNING:</strong></p>
-<h3 id="common-trap-when-saving-on-lenovo-avoid-pressing-f9">🚨 Common Trap When Saving on Lenovo: Avoid Pressing F9</h3>
-<p>If you accidentally press <strong><code>F9</code></strong> instead of <code>F10</code>, this prompt appears:</p>
-<p><p align="center">
-  <img src="./images/17_bios_lenovo_alerta_f9.jpg" alt="Setup Confirmation - Load default configuration now" width="550"/>
-</p></p>
-<p><code>F9</code> means <em>Load Default Settings</em>. If the red alert box appears (<em>"Load default configuration now?"</em>), <strong>DO NOT press <code>[YES]</code></strong>, because it will revert your changes and turn Secure Boot back on! Always select <strong><code>[NO]</code></strong> (green box), and then press <strong><code>F10</code></strong>.</p>
-</blockquote>
+<div class="callout callout-warning">
+  <div class="callout-header">
+    <span class="callout-icon">⚠️</span>
+    <span class="callout-title">WARNING: Common Trap When Saving on Lenovo: Avoid Pressing F9</span>
+  </div>
+  <p>If you accidentally press <strong><code>F9</code></strong> instead of <code>F10</code>, this prompt appears:</p>
+  <div class="callout-media">
+    <img src="./images/17_bios_lenovo_alerta_f9.jpg" alt="Setup Confirmation - Load default configuration now" />
+  </div>
+  <p><code>F9</code> means <em>Load Default Settings</em>. If the red alert box appears (<em>"Load default configuration now?"</em>), <strong>DO NOT press <code>[YES]</code></strong>, because it will revert your changes and turn Secure Boot back on! Always select <strong><code>[NO]</code></strong> (green box), and then press <strong><code>F10</code></strong>.</p>
+</div>
 <hr />
 <h2 id="phase-6-booting-from-usb-f12-boot-menu-and-gnu-grub">💻 Phase 6: Booting from USB (F12 Boot Menu and GNU GRUB)</h2>
 <ol>
@@ -560,11 +595,13 @@ This visual reference was captured from a YouTube demonstration on a <strong>Hua
 <li>Scroll down the list and select your preferred language (e.g., <strong><code>English</code></strong> or <strong><code>Español</code></strong> - <em>green box</em>).</li>
 <li>Click the <strong><code>Next</code></strong> button in the lower-right corner <em>(cyan box)</em>.</li>
 </ol>
-<blockquote>
-<p>💡 <strong>TIP:</strong>
-<strong>💡 Help Tip:</strong><br />
-You can choose <strong>English</strong> or <strong>Spanish</strong> according to what feels most comfortable for you to clearly read the partition and disk summaries.</p>
-</blockquote>
+<div class="callout callout-tip">
+  <div class="callout-header">
+    <span class="callout-icon">💡</span>
+    <span class="callout-title">TIP: Language Selection</span>
+  </div>
+  <p>You can choose <strong>English</strong> or <strong>Spanish</strong> according to what feels most comfortable for you to clearly read the partition and disk summaries.</p>
+</div>
 <hr />
 <h3 id="step-72-accessibility-options">Step 7.2: Accessibility Options</h3>
 <p>An introductory screen for accessibility settings (vision, hearing, zooming) will appear:</p>
@@ -642,12 +679,14 @@ You can choose <strong>English</strong> or <strong>Spanish</strong> according to
 </ol>
 <hr />
 <h2 id="phase-8-the-most-critical-step-dual-boot-alongside-windows">🚨 Phase 8: The Most Critical Step! Dual Boot Alongside Windows</h2>
-<blockquote>
-<p>🚨 <strong>CAUTION:</strong></p>
-<h3 id="maximum-attention-the-most-important-screen-of-the-entire-installation">🛑 MAXIMUM ATTENTION: The most important screen of the entire installation</h3>
-<p>The installer asks: <strong><code>How do you want to install Ubuntu?</code></strong>.<br />
-Read this section carefully to understand exactly what you will see on your screen:</p>
-</blockquote>
+<div class="callout callout-caution">
+  <div class="callout-header">
+    <span class="callout-icon">🚨</span>
+    <span class="callout-title">MAXIMUM ATTENTION: The most important screen of the entire installation</span>
+  </div>
+  <p>The installer asks: <strong><code>How do you want to install Ubuntu?</code></strong>.<br />
+  Read this section carefully to understand exactly what you will see on your screen:</p>
+</div>
 <p align="center">
   <img src="./images/30_instalador_alongside_kali.jpg" alt="Installation alongside another OS screen" width="700"/>
 </p>
@@ -712,10 +751,11 @@ Read this section carefully to understand exactly what you will see on your scre
 <li><strong>Your name:</strong> Your real name (e.g., <code>钱奕彤</code>).</li>
 <li><strong>Your computer's name:</strong> The hostname your laptop uses on the network (e.g., <code>yitong-matebook</code> or <code>matebook-ubuntu</code>). Use lowercase letters and hyphens without spaces.</li>
 <li><strong>Pick a username:</strong> The technical username for your profile and home directory (<code>/home/username</code>). Use <strong>lowercase letters, no spaces or special characters</strong> (e.g., <code>yitong</code>).</li>
-<li><strong>Choose a password and Confirm your password:</strong>  <blockquote>
-<p>📌 <strong>IMPORTANT:</strong>
-This password will be your administrative master key (<strong><code>sudo</code></strong>). You will need it whenever you install applications or make system changes. Pick a password you will remember easily!</p>
-</blockquote>
+<li><strong>Choose a password and Confirm your password:</strong>
+  <div class="callout-inline callout-important">
+    <span class="callout-inline-icon">📌</span>
+    <span><strong>Important:</strong> This password will be your administrative master key (<strong><code>sudo</code></strong>). You will need it whenever you install applications or make system changes. Pick a password you will remember easily!</span>
+  </div>
 </li>
 <li><strong>Login behavior:</strong> Select <strong><code>Require my password to log in</code></strong> for privacy and security.</li>
 <li>Click <strong><code>Next</code></strong> (cyan box).</li>
@@ -744,19 +784,23 @@ This password will be your administrative master key (<strong><code>sudo</code><
   <img src="./images/34_instalador_copiando_archivos.jpg" alt="Installation progress bar copying files" width="650"/>
 </p>
 
-<blockquote>
-<p>⚠️ <strong>WARNING:</strong>
-* <strong>Keep your laptop plugged into its power charger:</strong> Do not let the battery run out mid-installation.
-* <strong>Do not unplug the USB drive:</strong> Keep it connected while the progress bar is moving.</p>
-</blockquote>
+<div class="callout callout-warning">
+  <div class="callout-header">
+    <span class="callout-icon">⚠️</span>
+    <span class="callout-title">WARNING: During Installation</span>
+  </div>
+  <ul>
+    <li><strong>Keep your laptop plugged into its power charger:</strong> Do not let the battery run out mid-installation.</li>
+    <li><strong>Do not unplug the USB drive:</strong> Keep it connected while the progress bar is moving.</li>
+  </ul>
+</div>
 <h3 id="the-reboot-moment">The Reboot Moment:</h3>
 <p>When file copying finishes, a dialog will appear saying:<br />
 <code>Installation complete: You can restart your computer to use the new installation.</code></p>
 <ol>
 <li>Click <strong><code>Restart Now</code></strong>.</li>
 <li>The screen will turn black and display white text stating:
-   <code>text
-   Please remove the installation medium, then press ENTER:</code></li>
+<pre><code class="language-text">Please remove the installation medium, then press ENTER:</code></pre></li>
 <li><strong>Crucial step:</strong> Gently pull your USB flash drive out of the laptop port, and then press <strong><code>Enter</code></strong>.</li>
 </ol>
 <hr />
@@ -766,26 +810,31 @@ This password will be your administrative master key (<strong><code>sudo</code><
   <img src="./images/35_grub_dualboot_menu.jpg" alt="GNU GRUB Dual Boot Menu" width="650"/>
 </p>
 
-<pre><code class="language-text">                       GNU GRUB version 2.12
- -----------------------------------------------------------------
-  *Ubuntu
-   Advanced options for Ubuntu
-   Windows Boot Manager (on /dev/nvme0n1p1)
-   UEFI Firmware Settings
- -----------------------------------------------------------------
-   Use the ^ and v keys to select which entry is highlighted.
-   Press enter to boot the selected OS.
-</code></pre>
+<div class="grub-screen">
+  <div class="grub-topbar">GNU GRUB version 2.12</div>
+  <div class="grub-window">
+    <div class="grub-item grub-selected">*Ubuntu</div>
+    <div class="grub-item">Advanced options for Ubuntu</div>
+    <div class="grub-item grub-win">Windows Boot Manager (on /dev/nvme0n1p1)</div>
+    <div class="grub-item">UEFI Firmware Settings</div>
+  </div>
+  <div class="grub-instructions">
+    Use the ↑ and ↓ keys to select which entry is highlighted.<br />
+    Press <strong>Enter</strong> to boot the selected OS.
+  </div>
+</div>
 <ul>
 <li><strong>To boot into Ubuntu:</strong> Press <code>Enter</code> on the first option (<strong><code>Ubuntu</code></strong>).</li>
 <li><strong>To boot into your regular Windows:</strong> Use the down arrow key <code>↓</code> to highlight:<br />
   👉 <strong><code>Windows Boot Manager</code></strong> and press <code>Enter</code>. You will enter your familiar Windows desktop with all your files, software, and pictures completely intact.</li>
 </ul>
-<blockquote>
-<p>💡 <strong>TIP:</strong>
-<strong>❓ What if turning on your laptop boots straight into Windows without showing this menu?</strong><br />
-Don't worry! This simply means your BIOS prioritized Windows over Ubuntu. Power on the laptop, press <code>F2</code> to enter BIOS, navigate to <strong>Boot Order</strong>, move <strong><code>ubuntu</code></strong> to the first priority above <em>Windows Boot Manager</em>, and save with <code>F10</code>. The GRUB menu will now appear every time.</p>
-</blockquote>
+<div class="callout callout-tip">
+  <div class="callout-header">
+    <span class="callout-icon">💡</span>
+    <span class="callout-title">TIP: What if turning on your laptop boots straight into Windows without showing this menu?</span>
+  </div>
+  <p>Don't worry! This simply means your BIOS prioritized Windows over Ubuntu. Power on the laptop, press <code>F2</code> to enter BIOS, navigate to <strong>Boot Order</strong>, move <strong><code>ubuntu</code></strong> to the first priority above <em>Windows Boot Manager</em>, and save with <code>F10</code>. The GRUB menu will now appear every time.</p>
+</div>
 <hr />
 <h2 id="phase-15-first-steps-system-update-in-ubuntu">🚀 Phase 15: First Steps &amp; System Update in Ubuntu</h2>
 <h3 id="151-the-welcome-tour">15.1. The Welcome Tour</h3>
@@ -801,31 +850,67 @@ Don't worry! This simply means your BIOS prioritized Windows over Ubuntu. Power 
 <li>Open the terminal using the keyboard shortcut:<br />
 <code>Ctrl + Alt + T</code></li>
 <li>Type the following command and press <code>Enter</code>:
-   <code>bash
-   sudo apt update &amp;&amp; sudo apt upgrade -y</code></li>
-<li>The terminal will ask for your password (the one you chose during installation).<blockquote>
-<p>ℹ️ <strong>NOTE:</strong>
-For security reasons in Linux, <strong>no asterisks, dots, or characters will appear on screen as you type your password in the terminal</strong>. This is completely normal. Type your password confidently and press <code>Enter</code>.</p>
-</blockquote>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y</code></pre></li>
+<li>The terminal will ask for your password (the one you chose during installation).
+  <div class="callout-inline callout-note">
+    <span class="callout-inline-icon">ℹ️</span>
+    <span><strong>Note:</strong> For security reasons in Linux, <strong>no asterisks, dots, or characters will appear on screen as you type your password in the terminal</strong>. This is completely normal. Type your password confidently and press <code>Enter</code>.</span>
+  </div>
 </li>
 <li>The system will download and install all official security updates.</li>
 </ol>
 <hr />
 <h2 id="final-verification-checklist-certificate-of-success">🏆 Final Verification Checklist (Certificate of Success)</h2>
 <p>Check off each item to confirm that your installation was a total success:</p>
-<ul>
-<li>[ ] Backup copy of important personal files (homework, photos, projects) safely created before starting.</li>
-<li>[ ] USB flash drive cleanly restored with <code>diskpart</code> in Windows.</li>
-<li>[ ] Official 64-bit (Intel/AMD) Ubuntu LTS ISO downloaded.</li>
-<li>[ ] USB drive flashed without errors and 100% verified by balenaEtcher.</li>
-<li>[ ] Windows format disk warning canceled safely without altering the pendrive.</li>
-<li>[ ] BIOS configured with USB boot enabled and <em>Secure Boot</em> disabled.</li>
-<li>[ ] F12 boot menu used calmly to boot into <em>Try or Install Ubuntu</em>.</li>
-<li>[ ] Installation selected alongside your current system (<strong>alongside Windows Boot Manager</strong>).</li>
-<li>[ ] Disk space comfortably partitioned between both operating systems.</li>
-<li>[ ] User profile, computer name, and master administrative password created.</li>
-<li>[ ] USB drive unplugged when the <em>"Please remove installation medium"</em> prompt appeared.</li>
-<li>[ ] Dual Boot verified: GRUB menu allows choosing between Ubuntu or Windows every time you power on the laptop.</li>
+<ul class="checklist">
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-1" class="checklist-checkbox">
+    <label for="chk-1">Backup copy of important personal files (homework, photos, projects) safely created before starting.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-2" class="checklist-checkbox">
+    <label for="chk-2">USB flash drive cleanly restored with <code>diskpart</code> in Windows.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-3" class="checklist-checkbox">
+    <label for="chk-3">Official 64-bit (Intel/AMD) Ubuntu LTS ISO downloaded.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-4" class="checklist-checkbox">
+    <label for="chk-4">USB drive flashed without errors and 100% verified by balenaEtcher.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-5" class="checklist-checkbox">
+    <label for="chk-5">Windows format disk warning canceled safely without altering the pendrive.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-6" class="checklist-checkbox">
+    <label for="chk-6">BIOS configured with USB boot enabled and <em>Secure Boot</em> disabled.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-7" class="checklist-checkbox">
+    <label for="chk-7">F12 boot menu used calmly to boot into <em>Try or Install Ubuntu</em>.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-8" class="checklist-checkbox">
+    <label for="chk-8">Installation selected alongside your current system (<strong>alongside Windows Boot Manager</strong>).</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-9" class="checklist-checkbox">
+    <label for="chk-9">Disk space comfortably partitioned between both operating systems.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-10" class="checklist-checkbox">
+    <label for="chk-10">User profile, computer name, and master administrative password created.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-11" class="checklist-checkbox">
+    <label for="chk-11">USB drive unplugged when the <em>"Please remove installation medium"</em> prompt appeared.</label>
+  </li>
+  <li class="checklist-item">
+    <input type="checkbox" id="chk-12" class="checklist-checkbox">
+    <label for="chk-12">Dual Boot verified: GRUB menu allows choosing between Ubuntu or Windows every time you power on the laptop.</label>
+  </li>
 </ul>
 <hr />
 <p>🎉 <strong>Congratulations bae!</strong> I really hope this helped and that all of this was of great help to you. I love you so much, and don't forget to give me lots of kisses when you see me in person! I'm probably sleeping right now or who knows HAHAHA muaaaaaaaaaa! 💕</p>

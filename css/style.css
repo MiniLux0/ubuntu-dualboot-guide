@@ -20,12 +20,12 @@
   --brand-rose: #f43f5e;
   --brand-amber: #f59e0b;
   
-  --navbar-bg: rgba(11, 15, 25, 0.85);
+  --navbar-bg: rgba(11, 15, 25, 0.92);
   --navbar-border: rgba(255, 255, 255, 0.08);
   
-  --code-inline-bg: rgba(99, 102, 241, 0.12);
+  --code-inline-bg: rgba(99, 102, 241, 0.14);
   --code-inline-text: #38bdf8;
-  --code-inline-border: rgba(56, 189, 248, 0.22);
+  --code-inline-border: rgba(56, 189, 248, 0.25);
   
   --pre-bg: #070a13;
   --pre-border: rgba(255, 255, 255, 0.08);
@@ -34,13 +34,13 @@
   --table-border: #1e293b;
   --table-zebra: rgba(255, 255, 255, 0.02);
   
-  --callout-note: rgba(56, 189, 248, 0.09);
+  --callout-note: rgba(56, 189, 248, 0.08);
   --callout-note-border: #38bdf8;
-  --callout-tip: rgba(16, 185, 129, 0.09);
+  --callout-tip: rgba(16, 185, 129, 0.08);
   --callout-tip-border: #10b981;
-  --callout-warn: rgba(245, 158, 11, 0.1);
+  --callout-warn: rgba(245, 158, 11, 0.09);
   --callout-warn-border: #f59e0b;
-  --callout-danger: rgba(239, 68, 68, 0.1);
+  --callout-danger: rgba(239, 68, 68, 0.09);
   --callout-danger-border: #ef4444;
   
   --love-bg: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(168, 85, 247, 0.09));
@@ -53,7 +53,7 @@
 [data-theme="light"] {
   --bg-base: #f8fafc;
   --bg-mesh: radial-gradient(circle at 50% 0%, #e0e7ff 0%, #f1f5f9 50%, #f8fafc 100%);
-  --card-surface: rgba(255, 255, 255, 0.96);
+  --card-surface: rgba(255, 255, 255, 0.98);
   --card-border: #e2e8f0;
   --card-hover-border: #cbd5e1;
   
@@ -62,7 +62,7 @@
   --text-subtle: #64748b;
   --heading-main: #0f172a;
   
-  --navbar-bg: rgba(255, 255, 255, 0.9);
+  --navbar-bg: rgba(255, 255, 255, 0.95);
   --navbar-border: #e2e8f0;
   
   --code-inline-bg: #f1f5f9;
@@ -77,25 +77,34 @@
   --table-zebra: #f8fafc;
   
   --callout-note: #eff6ff;
-  --callout-note-border: #3b82f6;
+  --callout-note-border: #0284c7;
   --callout-tip: #ecfdf5;
-  --callout-tip-border: #10b981;
+  --callout-tip-border: #059669;
   --callout-warn: #fffbeb;
-  --callout-warn-border: #f59e0b;
+  --callout-warn-border: #d97706;
   --callout-danger: #fef2f2;
-  --callout-danger-border: #ef4444;
+  --callout-danger-border: #dc2626;
   
   --love-bg: linear-gradient(135deg, #fff1f2, #fdf4ff);
   --love-border: #f43f5e;
   --love-text: #9f1239;
   
-  --shadow-glass: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  --shadow-glass: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
 }
 
-* { box-sizing: border-box; }
+/* Base Reset & Overflow Prevention */
+* {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -112,6 +121,12 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+/* Universal Word Wrap to prevent box overflow */
+p, li, h1, h2, h3, h4, a, code, blockquote, div {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 /* Scroll Progress Bar */
 #progress-bar {
   position: fixed;
@@ -124,7 +139,9 @@ body {
   transition: width 0.1s ease;
 }
 
-/* Header & Navbar */
+/* ==========================================================================
+   Header & Navbar (Shake-free, Fixed-Height, Zero-Jump Layout)
+   ========================================================================== */
 .navbar {
   position: sticky;
   top: 0;
@@ -133,22 +150,40 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--navbar-border);
-  padding: 13px 28px;
+  height: 60px;
+  min-height: 60px;
+  max-height: 60px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
 .nav-brand {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 1.15em;
+  font-size: 1.12em;
   color: var(--heading-main);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
   letter-spacing: -0.015em;
+  flex-shrink: 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.nav-logo {
+  font-size: 1.2em;
+  flex-shrink: 0;
+}
+
+.nav-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .brand-badge {
@@ -159,27 +194,34 @@ body {
   border-radius: 6px;
   font-weight: 700;
   letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
 
 .nav-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
+  flex-shrink: 0;
 }
 
+/* Shake-Free Button System: transform is strictly disabled to prevent jumping */
 .btn {
   font-family: 'Plus Jakarta Sans', sans-serif;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 16px;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 14px;
   border-radius: 9px;
-  font-size: 0.88em;
+  font-size: 0.86em;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transform: none !important;
+  white-space: nowrap;
+  user-select: none;
 }
 
 .btn-outline {
@@ -187,10 +229,9 @@ body {
   color: var(--text-main) !important;
   border-color: var(--card-border);
 }
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
+.btn-outline:hover, .btn-outline:active {
+  background: rgba(255, 255, 255, 0.12);
   border-color: var(--brand-indigo);
-  transform: translateY(-1px);
 }
 
 .btn-pdf {
@@ -198,28 +239,31 @@ body {
   color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
 }
-.btn-pdf:hover {
+.btn-pdf:hover, .btn-pdf:active {
   background: linear-gradient(135deg, #dc2626, #b91c1c);
-  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
-  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
 }
 
 .btn-theme {
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-main);
   border-color: var(--card-border);
-  padding: 8px 12px;
-  font-size: 1.1em;
+  padding: 7px 11px;
+  font-size: 1.05em;
 }
-.btn-theme:hover {
+.btn-theme:hover, .btn-theme:active {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Container */
+/* ==========================================================================
+   Container & Main Card
+   ========================================================================== */
 .container {
-  max-width: 980px;
-  margin: 50px auto 100px auto;
-  padding: 0 24px;
+  max-width: 960px;
+  width: 100%;
+  margin: 40px auto 80px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .guide-card {
@@ -227,51 +271,52 @@ body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 24px;
-  padding: 65px 80px;
+  padding: 55px 65px;
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow-glass);
   transition: border-color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents any children from blowing out horizontally */
 }
 
-@media (max-width: 768px) {
-  .guide-card {
-    padding: 35px 22px;
-  }
-}
-
-/* Headings: Warm, Spacious, Elegant (Outfit font) */
+/* ==========================================================================
+   Headings & Reading Typography
+   ========================================================================== */
 h1, h2, h3, h4 {
   color: var(--heading-main);
   font-family: 'Outfit', -apple-system, sans-serif;
   letter-spacing: -0.025em;
+  max-width: 100%;
 }
 
 h1 {
-  font-size: 2.35em;
+  font-size: 2.2em;
   font-weight: 800;
   line-height: 1.25;
   margin-top: 0;
-  margin-bottom: 28px;
-  padding-bottom: 22px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
   border-bottom: 2px solid var(--card-border);
 }
 
 h2 {
-  font-size: 1.75em;
+  font-size: 1.65em;
   font-weight: 750;
-  line-height: 1.35;
-  margin-top: 3.8rem;
-  margin-bottom: 1.6rem;
-  padding-bottom: 14px;
+  line-height: 1.34;
+  margin-top: 3.6rem;
+  margin-bottom: 1.4rem;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--card-border);
 }
 
 h3 {
-  font-size: 1.36em;
+  font-size: 1.32em;
   font-weight: 680;
-  line-height: 1.42;
-  margin-top: 2.6rem;
-  margin-bottom: 1.2rem;
+  line-height: 1.4;
+  margin-top: 2.4rem;
+  margin-bottom: 1.1rem;
   color: #f8fafc;
 }
 
@@ -280,39 +325,40 @@ h3 {
 }
 
 h4 {
-  font-size: 1.15em;
+  font-size: 1.12em;
   font-weight: 600;
   color: var(--brand-cyan);
-  margin-top: 1.8rem;
-  margin-bottom: 0.85rem;
+  margin-top: 1.6rem;
+  margin-bottom: 0.8rem;
 }
 
-/* Paragraphs & Reading Flow */
 p {
-  font-size: 1.08em;
+  font-size: 1.06em;
   color: var(--text-muted);
-  line-height: 1.88;
+  line-height: 1.84;
   margin-top: 0;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
 }
 
-/* Lists: Clean vertical spacing to eliminate clumped text */
+/* Lists */
 ul, ol {
-  margin-top: 0.6rem;
-  margin-bottom: 2.2rem;
-  padding-left: 2.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  padding-left: 2rem;
+  max-width: 100%;
 }
 
 li {
-  font-size: 1.06em;
+  font-size: 1.04em;
   color: var(--text-muted);
-  line-height: 1.88;
-  margin-bottom: 1.2rem;
-  padding-left: 0.35rem;
+  line-height: 1.84;
+  margin-bottom: 1.1rem;
+  padding-left: 0.25rem;
 }
 
 li:last-child {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 ol > li::marker {
@@ -331,50 +377,15 @@ li > strong:first-child {
   letter-spacing: -0.01em;
 }
 
-/* Nested lists */
 li > ul, li > ol {
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
-  padding-left: 1.6rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  padding-left: 1.5rem;
 }
 
 li > ul > li, li > ol > li {
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.6rem;
   font-size: 0.98em;
-}
-
-/* Table of Contents Box */
-#table-of-contents + ol {
-  background: rgba(18, 24, 38, 0.7);
-  border: 1px solid var(--card-border);
-  border-radius: 18px;
-  padding: 28px 36px 28px 56px;
-  margin: 22px 0 52px 0;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.35);
-}
-
-[data-theme="light"] #table-of-contents + ol {
-  background: rgba(241, 245, 249, 0.9);
-  border-color: #e2e8f0;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-#table-of-contents + ol > li {
-  margin-bottom: 0.8rem;
-  font-size: 1.02em;
-  line-height: 1.65;
-}
-
-#table-of-contents + ol > li > a {
-  color: var(--brand-cyan);
-  font-weight: 550;
-  transition: all 0.2s ease;
-  display: inline-block;
-}
-
-#table-of-contents + ol > li > a:hover {
-  color: #7dd3fc;
-  transform: translateX(4px);
 }
 
 strong {
@@ -393,138 +404,401 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Romantic Love Card for 钱奕彤 */
+/* ==========================================================================
+   Table of Contents (Completely Stable, Shake-free, Working Links)
+   ========================================================================== */
+.toc-container {
+  background: rgba(18, 24, 38, 0.7);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 24px 28px;
+  margin: 22px 0 44px 0;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+[data-theme="light"] .toc-container {
+  background: rgba(241, 245, 249, 0.85);
+  border-color: #e2e8f0;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.toc-list {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.toc-list li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  font-size: 1em;
+  color: var(--text-muted);
+  padding-left: 4px;
+}
+
+.toc-list li::marker {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--brand-cyan);
+}
+
+.toc-list a {
+  color: var(--brand-cyan);
+  text-decoration: none;
+  font-weight: 550;
+  display: inline;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  transform: none !important; /* Zero translateX displacement */
+}
+
+.toc-list a:hover, .toc-list a:active {
+  color: #7dd3fc;
+  background: rgba(56, 189, 248, 0.12);
+  text-decoration: none;
+}
+
+.toc-list ul {
+  margin: 6px 0 6px 0;
+  padding-left: 20px;
+}
+
+.toc-list ul li {
+  font-size: 0.94em;
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   Modern UI/UX Pro Max Callout System (Zero Box Blowout)
+   ========================================================================== */
+.callout {
+  margin: 28px 0 34px 0;
+  padding: 22px 26px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--callout-note-border);
+  background: var(--callout-note);
+  color: var(--text-main);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.callout-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.06em;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.callout-icon {
+  font-size: 1.15em;
+  flex-shrink: 0;
+}
+
+.callout-title {
+  color: var(--heading-main);
+  line-height: 1.35;
+}
+
+.callout p {
+  margin: 0 0 12px 0;
+  color: var(--text-main);
+  line-height: 1.78;
+  font-size: 1.02em;
+}
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.callout ul, .callout ol {
+  margin: 8px 0 12px 0;
+  padding-left: 22px;
+}
+
+.callout li {
+  margin-bottom: 8px;
+  color: var(--text-main);
+  line-height: 1.72;
+}
+.callout li:last-child {
+  margin-bottom: 0;
+}
+
+.callout-media {
+  margin: 16px 0;
+  max-width: 100%;
+}
+.callout-media img {
+  margin: 0 auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Callout Color Themes */
+.callout-note {
+  background: var(--callout-note);
+  border-color: rgba(56, 189, 248, 0.22);
+  border-left: 4px solid var(--callout-note-border);
+}
+.callout-note .callout-title {
+  color: #38bdf8;
+}
+
+.callout-tip, .callout-success {
+  background: var(--callout-tip);
+  border-color: rgba(16, 185, 129, 0.22);
+  border-left: 4px solid var(--callout-tip-border);
+}
+.callout-tip .callout-title, .callout-success .callout-title {
+  color: #10b981;
+}
+
+.callout-warning {
+  background: var(--callout-warn);
+  border-color: rgba(245, 158, 11, 0.25);
+  border-left: 4px solid var(--callout-warn-border);
+}
+.callout-warning .callout-title {
+  color: #f59e0b;
+}
+
+.callout-caution {
+  background: var(--callout-danger);
+  border-color: rgba(239, 68, 68, 0.25);
+  border-left: 4px solid var(--callout-danger-border);
+}
+.callout-caution .callout-title {
+  color: #ef4444;
+}
+
+/* Inline callouts nested inside list items */
+.callout-inline {
+  margin: 12px 0 8px 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.94em;
+  line-height: 1.7;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid var(--card-border);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.callout-inline-icon {
+  font-size: 1.1em;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.callout-inline.callout-important {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.25);
+  border-left: 3px solid #f59e0b;
+  color: var(--text-main);
+}
+
+.callout-inline.callout-note {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.25);
+  border-left: 3px solid #38bdf8;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   Romantic Love Card for 钱奕彤
+   ========================================================================== */
 .love-card {
   background: var(--love-bg);
   border: 1px solid var(--love-border);
-  border-left: 6px solid #f43f5e;
+  border-left: 5px solid #f43f5e;
   border-radius: 18px;
-  padding: 28px 34px;
-  margin: 30px 0 42px 0;
-  box-shadow: 0 12px 30px rgba(244, 63, 94, 0.14);
+  padding: 24px 30px;
+  margin: 26px 0 38px 0;
+  box-shadow: 0 10px 28px rgba(244, 63, 94, 0.12);
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
+
 .love-card p {
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: var(--love-text) !important;
-  font-size: 1.08em;
+  font-size: 1.05em;
   margin: 0;
-  line-height: 1.85;
-}
-
-/* Callouts */
-blockquote {
-  margin: 34px 0 42px 0;
-  padding: 24px 32px;
-  border-radius: 0 16px 16px 0;
-  background: var(--callout-note);
-  border-left: 5px solid var(--callout-note-border);
-  color: var(--text-main);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-blockquote h3 {
-  margin-top: 0.4rem;
-  margin-bottom: 1rem;
-  font-size: 1.28em;
-}
-blockquote p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: var(--text-main);
   line-height: 1.82;
 }
-blockquote p:last-child { margin: 0; }
-blockquote ul, blockquote ol {
-  margin-top: 0.8rem;
-  margin-bottom: 1rem;
-  padding-left: 1.8rem;
-}
-blockquote li {
-  margin-bottom: 0.75rem;
-  color: var(--text-main);
-}
 
-/* Images */
+/* ==========================================================================
+   Images & Figure Frames (No layout jitter on touch)
+   ========================================================================== */
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 16px;
-  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.45);
-  margin: 36px auto;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  margin: 28px auto;
   display: block;
   border: 1px solid var(--card-border);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-img:hover {
-  transform: scale(1.015);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.6);
 }
 
-/* Code Blocks with Copy Buttons (JetBrains Mono strictly for code) */
+@media (hover: hover) {
+  img:hover {
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* ==========================================================================
+   Code Blocks & Terminal Snippets
+   ========================================================================== */
 code {
   font-family: 'JetBrains Mono', monospace;
   background: var(--code-inline-bg);
   color: var(--code-inline-text);
   border: 1px solid var(--code-inline-border);
-  padding: 3px 8px;
+  padding: 2px 7px;
   border-radius: 6px;
   font-size: 0.88em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .code-container {
   position: relative;
-  margin: 28px 0 36px 0;
+  margin: 24px 0 32px 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 pre {
   background: var(--pre-bg);
   border: 1px solid var(--pre-border);
-  padding: 22px 26px;
+  padding: 20px 24px;
   border-radius: 14px;
   overflow-x: auto;
   margin: 0;
   box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+  max-width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
+
 pre code {
   background: transparent;
   border: none;
   color: #e2e8f0;
   padding: 0;
-  font-size: 0.94em;
-  line-height: 1.7;
+  font-size: 0.92em;
+  line-height: 1.68;
 }
 
 .copy-btn {
   position: absolute;
-  top: 12px;
-  right: 14px;
+  top: 10px;
+  right: 12px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #94a3b8;
   border-radius: 6px;
-  padding: 5px 12px;
+  padding: 4px 10px;
   font-size: 0.78em;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  transform: none !important;
 }
+
 .copy-btn:hover {
   background: rgba(255, 255, 255, 0.18);
   color: #ffffff;
 }
 
-/* Tables: Responsive horizontal scroll on small viewports */
+/* ==========================================================================
+   Simulated GRUB Boot Menu UI Widget
+   ========================================================================== */
+.grub-screen {
+  background: #000000;
+  border: 2px solid #334155;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 28px 0 34px 0;
+  font-family: 'JetBrains Mono', monospace;
+  color: #cbd5e1;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
+}
+
+.grub-topbar {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95em;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #475569;
+  margin-bottom: 16px;
+}
+
+.grub-window {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.grub-item {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.grub-item.grub-selected {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.grub-item.grub-win {
+  color: #38bdf8;
+}
+
+.grub-instructions {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #475569;
+  font-size: 0.82em;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 34px 0;
+  margin: 30px 0;
   border-radius: 14px;
-  overflow: hidden;
   border: 1px solid var(--table-border);
   display: block;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
 th {
   background: var(--table-head);
   color: var(--heading-main);
@@ -536,6 +810,7 @@ th {
   border-bottom: 1px solid var(--table-border);
   white-space: nowrap;
 }
+
 td {
   padding: 15px 20px;
   border-bottom: 1px solid var(--table-border);
@@ -543,18 +818,102 @@ td {
   line-height: 1.75;
   min-width: 140px;
 }
+
 tr:nth-child(even) { background: var(--table-zebra); }
 tr:hover { background: rgba(255, 255, 255, 0.03); }
 
-/* Dividers */
+/* ==========================================================================
+   Interactive UI/UX Checklist Component
+   ========================================================================== */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-size: 1em;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 0;
+}
+
+[data-theme="light"] .checklist-item {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.checklist-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.checklist-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #6366f1;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
+  display: grid;
+  place-content: center;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.checklist-checkbox::before {
+  content: "✔";
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  transform: scale(0);
+  transition: transform 0.15s ease-in-out;
+}
+
+.checklist-checkbox:checked {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-color: #10b981;
+}
+
+.checklist-checkbox:checked::before {
+  transform: scale(1);
+}
+
+.checklist-item label {
+  cursor: pointer;
+  flex: 1;
+}
+
+.checklist-item.checked label {
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+
+/* ==========================================================================
+   Dividers, Back to Top, Footer
+   ========================================================================== */
 hr {
   border: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--card-border), transparent);
-  margin: 60px 0 50px 0;
+  margin: 50px 0 45px 0;
 }
 
-/* Back to Top Floating Button */
 #back-to-top {
   position: fixed;
   bottom: 28px;
@@ -571,22 +930,23 @@ hr {
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease, background-color 0.2s ease;
   box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   z-index: 999;
   font-size: 1.2em;
+  transform: none !important;
 }
+
 #back-to-top.visible {
   opacity: 1;
   visibility: visible;
 }
+
 #back-to-top:hover {
   background: var(--brand-indigo);
   color: #ffffff;
-  transform: translateY(-2px);
 }
 
-/* Footer */
 footer {
   text-align: center;
   padding: 40px 20px;
@@ -600,134 +960,117 @@ footer {
    UI UX PRO MAX RESPONSIVE ENGINE (Tablet & Mobile Breakpoints)
    ========================================================================== */
 
-/* Tablet & Mobile (<= 768px) */
+/* Tablet (<= 768px) */
 @media (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
-    width: 100%;
-  }
-
   .container {
     padding: 0 14px;
-    margin: 20px auto 60px auto;
+    margin: 18px auto 50px auto;
   }
 
   .guide-card {
-    padding: 34px 22px;
+    padding: 32px 22px;
     border-radius: 18px;
   }
 
   .navbar {
-    padding: 10px 16px;
-    gap: 10px;
+    padding: 0 16px;
+    height: 58px;
+    min-height: 58px;
+    max-height: 58px;
   }
 
-  .nav-brand {
-    font-size: 1.05em;
-    gap: 8px;
+  .brand-badge {
+    display: none;
   }
 
-  .nav-actions {
-    gap: 6px;
-  }
-
-  .btn {
-    padding: 7px 12px;
-    font-size: 0.82em;
-    min-height: 38px;
+  .pdf-size {
+    display: none;
   }
 
   h1 {
-    font-size: 1.75em;
+    font-size: 1.68em;
     line-height: 1.28;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    word-break: break-word;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
   }
 
   h2 {
-    font-size: 1.4em;
+    font-size: 1.36em;
     line-height: 1.32;
-    margin-top: 2.8rem;
-    margin-bottom: 1.2rem;
+    margin-top: 2.6rem;
+    margin-bottom: 1.1rem;
     padding-bottom: 10px;
-    word-break: break-word;
   }
 
   h3 {
-    font-size: 1.22em;
-    line-height: 1.35;
-    margin-top: 2rem;
-    margin-bottom: 0.95rem;
+    font-size: 1.18em;
+    line-height: 1.36;
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
   }
 
   h4 {
     font-size: 1.05em;
-    margin-top: 1.4rem;
-    margin-bottom: 0.65rem;
-  }
-
-  p {
-    font-size: 1.02em;
-    line-height: 1.78;
-    margin-bottom: 1.3rem;
-  }
-
-  ul, ol {
-    padding-left: 1.45rem;
-    margin-bottom: 1.8rem;
-  }
-
-  li {
-    font-size: 1em;
-    line-height: 1.78;
-    margin-bottom: 1rem;
-  }
-
-  li > ul, li > ol {
-    padding-left: 1.2rem;
-    margin-top: 0.6rem;
+    margin-top: 1.3rem;
     margin-bottom: 0.6rem;
   }
 
-  #table-of-contents + ol {
-    padding: 22px 20px 22px 40px;
-    margin: 18px 0 38px 0;
-    border-radius: 14px;
+  p {
+    font-size: 1em;
+    line-height: 1.76;
+    margin-bottom: 1.2rem;
   }
 
-  #table-of-contents + ol > li {
-    font-size: 0.96em;
-    margin-bottom: 0.65rem;
-    line-height: 1.5;
+  ul, ol {
+    padding-left: 1.35rem;
+    margin-bottom: 1.6rem;
+  }
+
+  li {
+    font-size: 0.98em;
+    line-height: 1.76;
+    margin-bottom: 0.95rem;
+  }
+
+  li > ul, li > ol {
+    padding-left: 1.1rem;
+  }
+
+  .toc-container {
+    padding: 18px 20px;
+    border-radius: 14px;
+    margin: 18px 0 34px 0;
+  }
+
+  .toc-list {
+    padding-left: 20px;
+  }
+
+  .toc-list li {
+    font-size: 0.95em;
+    margin-bottom: 6px;
+  }
+
+  .callout {
+    padding: 16px 18px;
+    border-radius: 14px;
+    margin: 20px 0 26px 0;
+  }
+
+  .callout p {
+    font-size: 0.98em;
+    line-height: 1.72;
   }
 
   .love-card {
-    padding: 22px 20px;
-    margin: 22px 0 32px 0;
+    padding: 18px 20px;
     border-radius: 14px;
+    margin: 20px 0 28px 0;
   }
 
   .love-card p {
-    font-size: 1em;
-    line-height: 1.78;
-  }
-
-  blockquote {
-    margin: 24px 0 32px 0;
-    padding: 18px 20px;
-    border-radius: 0 12px 12px 0;
-  }
-
-  blockquote h3 {
-    font-size: 1.15em;
-    margin: 6px 0 10px 0;
-  }
-
-  blockquote p {
     font-size: 0.98em;
-    line-height: 1.72;
-    margin-bottom: 10px;
+    line-height: 1.76;
   }
 
   pre {
@@ -737,141 +1080,221 @@ footer {
 
   pre code {
     font-size: 0.86em;
-    line-height: 1.6;
   }
 
   .copy-btn {
     top: 8px;
     right: 8px;
-    padding: 4px 8px;
+    padding: 3px 8px;
     font-size: 0.72em;
   }
 
-  img {
-    margin: 24px auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  }
-
-  hr {
-    margin: 44px 0 36px 0;
-  }
-
   #back-to-top {
-    bottom: max(18px, env(safe-area-inset-bottom, 18px));
-    right: 18px;
-    width: 44px;
-    height: 44px;
+    bottom: max(16px, env(safe-area-inset-bottom, 16px));
+    right: 16px;
+    width: 42px;
+    height: 42px;
   }
 
   footer {
-    padding: 32px 16px max(32px, env(safe-area-inset-bottom, 32px)) 16px;
+    padding: 30px 16px max(30px, env(safe-area-inset-bottom, 30px)) 16px;
     font-size: 0.88em;
   }
 }
 
-/* Small Smartphone Viewports (<= 480px, e.g. iPhone, Pixel, Galaxy) */
+/* Smartphone Viewports (<= 480px, e.g. iPhone, Pixel, Galaxy) */
 @media (max-width: 480px) {
   .container {
     padding: 0 8px;
-    margin: 12px auto 40px auto;
+    margin: 10px auto 35px auto;
   }
 
   .guide-card {
-    padding: 22px 15px;
+    padding: 18px 14px;
     border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
   }
 
   .navbar {
-    padding: 8px 12px;
+    padding: 0 10px;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
   }
 
   .nav-brand {
-    font-size: 0.96em;
+    font-size: 0.98em;
+    gap: 6px;
   }
 
-  .brand-badge {
-    display: none; /* Hide version badge on very compact screens */
+  .nav-title {
+    max-width: 135px;
   }
 
-  .pdf-size {
-    display: none; /* Hide '(21 MB)' on phones to save navbar width */
+  .git-text {
+    display: none;
   }
 
   .btn {
-    padding: 6px 10px;
+    padding: 6px 9px;
     font-size: 0.8em;
   }
 
   .btn-theme {
-    padding: 6px 10px;
-    font-size: 1em;
+    padding: 6px 9px;
+    font-size: 0.98em;
   }
 
   h1 {
-    font-size: 1.48em;
+    font-size: 1.42em;
     line-height: 1.25;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
   }
 
   h2 {
-    font-size: 1.26em;
+    font-size: 1.22em;
     line-height: 1.3;
-    margin-top: 2.2rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 0.9rem;
     padding-bottom: 8px;
   }
 
   h3 {
-    font-size: 1.12em;
-    margin-top: 1.6rem;
+    font-size: 1.08em;
+    margin-top: 1.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  p {
+    font-size: 0.94em;
+    line-height: 1.68;
+    margin-bottom: 1.1rem;
+  }
+
+  li {
+    font-size: 0.94em;
+    line-height: 1.68;
     margin-bottom: 0.8rem;
   }
 
-  p, li {
-    font-size: 0.96em;
-    line-height: 1.72;
-  }
-
   ul, ol {
-    padding-left: 1.25rem;
+    padding-left: 1.15rem;
+    margin-bottom: 1.4rem;
   }
 
-  #table-of-contents + ol {
-    padding: 16px 14px 16px 32px;
+  .toc-container {
+    padding: 14px 14px;
     border-radius: 12px;
+    margin: 16px 0 28px 0;
+  }
+
+  .toc-list {
+    padding-left: 18px;
+  }
+
+  .toc-list li {
+    font-size: 0.91em;
+    margin-bottom: 5px;
+  }
+
+  .callout {
+    padding: 14px 14px;
+    border-radius: 12px;
+    margin: 16px 0 22px 0;
+  }
+
+  .callout-header {
+    font-size: 0.98em;
+    margin-bottom: 8px;
+  }
+
+  .callout p {
+    font-size: 0.92em;
+    line-height: 1.66;
+  }
+
+  .callout ul, .callout ol {
+    padding-left: 18px;
+  }
+
+  .callout-inline {
+    padding: 10px 12px;
+    font-size: 0.88em;
+    gap: 8px;
+    border-radius: 10px;
   }
 
   .love-card {
-    padding: 18px 15px;
+    padding: 15px 14px;
     border-radius: 12px;
-    margin: 18px 0 26px 0;
+    margin: 16px 0 24px 0;
   }
 
-  blockquote {
-    padding: 15px 14px;
-    margin: 18px 0 24px 0;
-    border-left-width: 4px;
+  .love-card p {
+    font-size: 0.92em;
+    line-height: 1.68;
+  }
+
+  .checklist-item {
+    padding: 10px 12px;
+    font-size: 0.92em;
+    gap: 9px;
+  }
+
+  .checklist-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+
+  .grub-screen {
+    padding: 14px 14px;
+  }
+
+  .grub-item {
+    font-size: 0.8em;
+    padding: 4px 8px;
+  }
+
+  hr {
+    margin: 36px 0 30px 0;
   }
 }
 
-/* Ultra-compact screens (<= 360px) */
+/* Ultra-compact screens (<= 360px, e.g. iPhone SE 1st gen, small Galaxy) */
 @media (max-width: 360px) {
-  .nav-brand span {
-    max-width: 110px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .container {
+    padding: 0 4px;
   }
 
-  .git-text {
-    display: none; /* Only show star icon on 320px screens */
+  .guide-card {
+    padding: 15px 10px;
+    border-radius: 12px;
+  }
+
+  .nav-brand {
+    font-size: 0.9em;
+    gap: 4px;
+  }
+
+  .nav-title {
+    max-width: 100px;
   }
 
   .btn {
-    padding: 5px 8px;
-    font-size: 0.76em;
+    padding: 5px 7px;
+    font-size: 0.75em;
+  }
+
+  .btn-theme {
+    padding: 5px 7px;
+  }
+
+  .callout {
+    padding: 12px 10px;
+  }
+
+  .toc-container {
+    padding: 12px 10px;
   }
 }
