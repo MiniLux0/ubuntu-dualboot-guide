@@ -782,7 +782,6 @@ Marca mentalmente cada punto para confirmar que tu instalación fue un éxito ro
 - [ ] Usuario, nombre de máquina y contraseña maestra configurados.
 - [ ] Memoria USB retirada al ver el mensaje *"Please remove installation medium"*.
 - [ ] Menú GRUB comprobado: puedes entrar a Ubuntu y a Windows cuando tú quieras.
-- [ ] Primera actualización `sudo apt update` realizada con éxito.
 
 ---
 

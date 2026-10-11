@@ -781,7 +781,6 @@ Check off each item to confirm that your installation was a total success:
 - [ ] User profile, computer name, and master administrative password created.
 - [ ] USB drive unplugged when the *"Please remove installation medium"* prompt appeared.
 - [ ] Dual Boot verified: GRUB menu allows choosing between Ubuntu or Windows every time you power on the laptop.
-- [ ] First `sudo apt update` completed smoothly.
 
 ---
 
