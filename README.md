@@ -1,11 +1,50 @@
-# 🐧 Ubuntu 24.04 LTS Dual Boot Visual Guide (for Windows)
+<div align="center">
+
+# 🐧 Ubuntu 24.04 LTS Dual Boot Visual Guide
+### A complete, foolproof recovery & installation manual for Windows laptops
 
 [![GitHub Pages](https://img.shields.io/badge/Live_Site-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](https://minilux0.github.io/ubuntu-dualboot-guide/)
 [![Download PDF](https://img.shields.io/badge/Download_PDF-21.2_MB-dc2626?style=for-the-badge&logo=adobeacrobatreader)](https://minilux0.github.io/ubuntu-dualboot-guide/ubuntu_dualboot_guide_for_charlotte.pdf)
 [![Language Spanish](https://img.shields.io/badge/Versi%C3%B3n-Espa%C3%B1ol-blue?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/es.html)
+[![Screenshots](https://img.shields.io/badge/Screenshots-32_Annotated_Photos-orange?style=for-the-badge&logo=googlephotos)](./imagenes_guia/)
+[![Dedicated](https://img.shields.io/badge/Dedicated_With_Love_To-Charlotte_%E9%92%B1%E5%A5%95%E5%BD%A4-ff69b4?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/)
 
-> 🌐 **Live Web Version:** Visit the published interactive guide at:  
-> **👉 [https://minilux0.github.io/ubuntu-dualboot-guide/](https://minilux0.github.io/ubuntu-dualboot-guide/)**
+<p align="center">
+  <b>🌐 Live Interactive Guide (Dark / Light Mode):</b><br>
+  👉 <a href="https://minilux0.github.io/ubuntu-dualboot-guide/"><b>https://minilux0.github.io/ubuntu-dualboot-guide/</b></a>
+</p>
+
+</div>
+
+---
+
+### 📖 About This Project & Real-World Context
+
+> **💖 Dedicated to Charlotte (钱奕彤):**  
+> This project was created out of real necessity and lots of love. My girlfriend had frustrating boot errors and corrupted USB partitions while trying to install Ubuntu with Rufus on her **Huawei MateBook (Windows 11)**.  
+> 
+> To prove to her that it was 100% possible and give her absolute confidence, **I ran the full installation on my own laptop (Lenovo IdeaPad), capturing all 32 real-life annotated photos step-by-step**: from deep USB cleaning with `diskpart`, flawless raw bit-by-bit cloning with `balenaEtcher`, BIOS / UEFI Secure Boot configuration, to non-destructive Dual Boot partition resizing alongside Windows.
+
+| Specification | Project Details |
+| :--- | :--- |
+| 🎯 **Target Machine** | **Huawei MateBook** (Windows 11 Home / Device Encryption) |
+| 🧪 **Documented & Tested On** | **Lenovo IdeaPad S145** (with authentic photos of every screen) |
+| 🐧 **Operating System** | **Ubuntu 24.04.1 LTS (Noble Numbat)** 64-bit |
+| 💾 **USB Flasher** | **balenaEtcher** (DD raw bit-by-bit mode — avoids Rufus partition corruption) |
+| 🛡️ **Disk Recovery** | Native Windows `diskpart` (clean, create partition, format fat32) |
+| 🔑 **Pre-requisite** | BitLocker & Device Encryption 3-method disabling walkthrough |
+| 📸 **Visual Assets** | **32 high-resolution annotated screenshots** (cyan, green, amber, red indicators) |
+| 📄 **Deliverables** | Web (GitHub Pages), Standalone HTML (embedded images), and 21 MB PDF |
+
+---
+
+### ✨ What Makes This Guide Different?
+
+- 🚫 **No Generic Fluff:** Every single screen, warning dialog, and BIOS setting has an annotated photo with clear color-coded callouts.
+- 🛑 **The Rufus Trap Solved:** Explains why Rufus failed (UEFI/GPT partition table mismatch and signature rejection) and why balenaEtcher is the bulletproof solution.
+- 🛡️ **BitLocker Guard:** 3 specific methods to check and disable Windows 11 encryption so the installer can shrink the Windows partition without data loss.
+- 💻 **BIOS Differences Handled:** Covers both the **InsydeH2O** BIOS layout found on Huawei MateBooks as well as **Lenovo Setup Utility**.
+- 🔒 **Zero Risk to Windows:** Clear visual guidance ensuring only the `Install Ubuntu alongside Windows Boot Manager` option is selected, never touching existing personal files.
 
 ---
 
