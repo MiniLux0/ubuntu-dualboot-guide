@@ -5,19 +5,18 @@
 
 [![Live Web](https://img.shields.io/badge/Live_Site-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](https://minilux0.github.io/ubuntu-dualboot-guide/)
 [![Download PDF](https://img.shields.io/badge/Download_PDF-21_MB-dc2626?style=for-the-badge&logo=adobeacrobatreader)](https://minilux0.github.io/ubuntu-dualboot-guide/ubuntu_dualboot_guide.pdf)
-[![Spanish Version](https://img.shields.io/badge/Versi%C3%B3n-Espa%C3%B1ol-38bdf8?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/es.html)
-[![Screenshots](https://img.shields.io/badge/Screenshots-33_Annotated_Photos-orange?style=for-the-badge&logo=googlephotos)](./imagenes_guia/)
+[![Screenshots](https://img.shields.io/badge/Screenshots-33_Annotated_Photos-orange?style=for-the-badge&logo=googlephotos)](./images/)
 [![Dedicated to](https://img.shields.io/badge/Dedicated_With_Love_To-%E9%92%B1%E5%A5%95%E5%BD%A4-f43f5e?style=for-the-badge)](https://minilux0.github.io/ubuntu-dualboot-guide/)
 
 <br>
 
 <p align="center">
   <a href="https://minilux0.github.io/ubuntu-dualboot-guide/">
-    <img src="./imagenes_guia/30_instalador_junto_windows.jpg" alt="Ubuntu Alongside Windows" width="680" style="border-radius:12px;"/>
+    <img src="./images/30_instalador_junto_windows.jpg" alt="Ubuntu Alongside Windows" width="680" style="border-radius:12px;"/>
   </a>
 </p>
 
-### 🚀 [Open Interactive Web Guide (English)](https://minilux0.github.io/ubuntu-dualboot-guide/) &bull; [Versión en Español](https://minilux0.github.io/ubuntu-dualboot-guide/es.html)
+### 🚀 [Open Interactive Web Guide (English)](https://minilux0.github.io/ubuntu-dualboot-guide/) &bull; [Versión en Español (es.html)](https://minilux0.github.io/ubuntu-dualboot-guide/es.html)
 
 </div>
 
@@ -61,13 +60,11 @@ Every single screen, BIOS menu, and installer dialog was photographed, tested, a
 
 ---
 
-### 📂 Full Reading Options
+### 📂 Reading Options
 
-* 🌐 **Web App (Recommended):** [https://minilux0.github.io/ubuntu-dualboot-guide/](https://minilux0.github.io/ubuntu-dualboot-guide/)
-* 🇪🇸 **Web App (Español):** [https://minilux0.github.io/ubuntu-dualboot-guide/es.html](https://minilux0.github.io/ubuntu-dualboot-guide/es.html)
+* 🌐 **Web Guide:** [https://minilux0.github.io/ubuntu-dualboot-guide/](https://minilux0.github.io/ubuntu-dualboot-guide/)
 * 📥 **PDF Guide (Offline):** [Download ubuntu_dualboot_guide.pdf (21 MB)](https://minilux0.github.io/ubuntu-dualboot-guide/ubuntu_dualboot_guide.pdf)
-* 📄 **Markdown Source (EN):** [guia_recuperacion_y_booteo_ubuntu.md](./guia_recuperacion_y_booteo_ubuntu.md)
-* 📄 **Markdown Source (ES):** [guia_recuperacion_y_booteo_ubuntu_es.md](./guia_recuperacion_y_booteo_ubuntu_es.md)
+* 📄 **Markdown Source:** [docs/ubuntu_dualboot_guide.md](./docs/ubuntu_dualboot_guide.md)
 
 ---
 

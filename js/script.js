@@ -22,7 +22,7 @@ function updateThemeIcon(theme) {
 window.addEventListener('scroll', () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
   const progressBar = document.getElementById('progress-bar');
   if (progressBar) {
     progressBar.style.width = scrolled + '%';
@@ -42,7 +42,7 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Dynamic Copy Code Buttons
+// Dynamic Copy Code Buttons and Initial Setup
 document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
